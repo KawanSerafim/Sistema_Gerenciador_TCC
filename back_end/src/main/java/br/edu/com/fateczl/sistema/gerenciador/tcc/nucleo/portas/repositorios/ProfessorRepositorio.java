@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface ProfessorRepositorio {
     Professor salvar(Professor professor);
 
+    Optional<Professor> buscarPorMatricula(String matricula);
+
     Optional<Professor> buscarPorEmail(String email);
 }
