@@ -1,5 +1,6 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades;
 
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
@@ -56,7 +57,15 @@ public class Administrador {
         this.contaUsuario = contaUsuario;
     }
 
-    public String getEmailAdministrador() {
+    public String getEmailContaUsuario() {
         return contaUsuario.getEmail();
+    }
+
+    public String getSenhaContaUsuario() {
+        return contaUsuario.getSenha();
+    }
+
+    public StatusContaUsuario getStatusContaUsuario() {
+        return contaUsuario.getStatus();
     }
 }

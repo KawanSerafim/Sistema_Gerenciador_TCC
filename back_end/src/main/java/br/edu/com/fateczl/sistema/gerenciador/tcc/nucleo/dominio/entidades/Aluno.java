@@ -155,4 +155,16 @@ public class Aluno {
         }
         this.turmas = turmas;
     }
+
+    public String getEmailContaUsuario() {
+        return contaUsuario.getEmail();
+    }
+
+    public String getSenhaContaUsuario() {
+        return contaUsuario.getSenha();
+    }
+
+    public StatusContaUsuario getStatusContaUsuario() {
+        return contaUsuario.getStatus();
+    }
 }

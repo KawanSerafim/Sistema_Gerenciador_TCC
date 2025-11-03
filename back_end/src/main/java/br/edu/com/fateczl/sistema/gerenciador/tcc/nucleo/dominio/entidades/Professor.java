@@ -2,6 +2,7 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades;
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .CargoProfessor;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
@@ -94,5 +95,17 @@ public class Professor {
             );
         }
         this.cargo = cargo;
+    }
+
+    public String getEmailContaUsuario() {
+        return contaUsuario.getEmail();
+    }
+
+    public String getSenhaContaUsuario() {
+        return contaUsuario.getSenha();
+    }
+
+    public StatusContaUsuario getStatusContaUsuario() {
+        return contaUsuario.getStatus();
     }
 }
