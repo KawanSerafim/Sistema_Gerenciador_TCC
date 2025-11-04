@@ -1,7 +1,9 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.mapeadores;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.modelos.ContaUsuarioModelo;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.ContaUsuario;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.modelos.ContaUsuarioModelo;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .ContaUsuario;
 import org.springframework.stereotype.Component;
 
 @Component
