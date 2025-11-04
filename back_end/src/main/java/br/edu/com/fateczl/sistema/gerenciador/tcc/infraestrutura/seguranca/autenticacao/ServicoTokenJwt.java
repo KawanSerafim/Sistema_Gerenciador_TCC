@@ -1,4 +1,4 @@
-package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.seguranca;
+package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.seguranca.autenticacao;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
