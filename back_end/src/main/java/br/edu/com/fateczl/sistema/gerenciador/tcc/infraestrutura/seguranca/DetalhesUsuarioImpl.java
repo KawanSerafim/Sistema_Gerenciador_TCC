@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 
-public record DetalhesUsuarioPersonalizado(
+public record DetalhesUsuarioImpl(
         String username,
         String password,
         Collection<? extends GrantedAuthority> authorities,
