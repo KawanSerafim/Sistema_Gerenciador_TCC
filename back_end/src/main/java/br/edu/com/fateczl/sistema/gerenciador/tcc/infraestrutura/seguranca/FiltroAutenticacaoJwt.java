@@ -1,4 +1,4 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.seguranca;
 
-public record DetalhesUsuario() {
+public class FiltroAutenticacaoJwt {
 }
