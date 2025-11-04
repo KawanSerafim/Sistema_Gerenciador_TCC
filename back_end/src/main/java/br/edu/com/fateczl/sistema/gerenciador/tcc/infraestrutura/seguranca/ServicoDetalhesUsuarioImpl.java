@@ -17,12 +17,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Collections;
 import java.util.List;
 
-public class ServicoDetalhesUsuarioPersonalizado implements UserDetailsService {
+public class ServicoDetalhesUsuarioImpl implements UserDetailsService {
     private final AdministradorRepositorio administradorRepositorio;
     private final ProfessorRepositorio professorRepositorio;
     private final AlunoRepositorio alunoRepositorio;
 
-    public ServicoDetalhesUsuarioPersonalizado(
+    public ServicoDetalhesUsuarioImpl(
             AdministradorRepositorio administradorRepositorio,
             ProfessorRepositorio professorRepositorio,
             AlunoRepositorio alunoRepositorio
@@ -42,7 +42,7 @@ public class ServicoDetalhesUsuarioPersonalizado implements UserDetailsService {
                     new SimpleGrantedAuthority("ROLE_ADMIN")
             );
 
-            return new DetalhesUsuarioPersonalizado(
+            return new DetalhesUsuarioImpl(
                     administrador.getEmailContaUsuario(),
                     administrador.getSenhaContaUsuario(),
                     authorities,
@@ -58,7 +58,7 @@ public class ServicoDetalhesUsuarioPersonalizado implements UserDetailsService {
                     new SimpleGrantedAuthority("ROLE_PROFESSOR")
             );
 
-            return new DetalhesUsuarioPersonalizado(
+            return new DetalhesUsuarioImpl(
                     professor.getEmailContaUsuario(),
                     professor.getSenhaContaUsuario(),
                     authorities,
@@ -81,7 +81,7 @@ public class ServicoDetalhesUsuarioPersonalizado implements UserDetailsService {
                     new SimpleGrantedAuthority("ROLE_ALUNO")
             );
 
-            return new DetalhesUsuarioPersonalizado(
+            return new DetalhesUsuarioImpl(
                     aluno.getEmailContaUsuario(),
                     aluno.getSenhaContaUsuario(),
                     authorities,
