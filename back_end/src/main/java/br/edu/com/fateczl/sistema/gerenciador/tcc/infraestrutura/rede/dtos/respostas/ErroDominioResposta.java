@@ -4,4 +4,4 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 
-public record ErroResposta(CodigoErro codigo, String mensagem) {}
+public record ErroDominioResposta(CodigoErro codigo, String mensagem) {}
