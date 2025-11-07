@@ -41,8 +41,6 @@ public class AdministradorRepositorioImpl implements AdministradorRepositorio {
         Optional<AdministradorModelo> administradorModeloOpt =
                 repositorioSpring.findByContaUsuarioEmail(email);
 
-        return administradorModeloOpt.map(
-                this.mapeador::paraDominio
-        );
+        return administradorModeloOpt.map(this.mapeador::paraDominio);
     }
 }
