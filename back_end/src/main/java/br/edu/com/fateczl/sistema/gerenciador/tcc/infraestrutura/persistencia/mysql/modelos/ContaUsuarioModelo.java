@@ -17,7 +17,7 @@ public class ContaUsuarioModelo {
     private String senha;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 30)
+    @Column(name = "status_conta", length = 30)
     private StatusContaUsuario status;
 
     public ContaUsuarioModelo() {}
