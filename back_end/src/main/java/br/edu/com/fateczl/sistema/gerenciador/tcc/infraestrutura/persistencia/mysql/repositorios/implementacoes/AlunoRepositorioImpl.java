@@ -11,9 +11,11 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Aluno;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AlunoRepositorio;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class AlunoRepositorioImpl implements AlunoRepositorio {
     private final AlunoRepositorioSpring repositorioSpring;
     private final AlunoMapeador mapeador;
