@@ -23,7 +23,7 @@ public class Curso {
     ) {
         this.setNome(nome);
         this.setParametros(parametros);
-        this.setCoordenadorCurso(coordenador);
+        this.setCoordenador(coordenador);
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {
@@ -76,7 +76,7 @@ public class Curso {
         return coordenador;
     }
 
-    public void setCoordenadorCurso(Professor coordenador) {
+    public void setCoordenador(Professor coordenador) {
         if(coordenador == null) {
             throw new ExcecaoDominio(
                     CodigoErro.VD_001_CAMPO_OBRIGATORIO,
