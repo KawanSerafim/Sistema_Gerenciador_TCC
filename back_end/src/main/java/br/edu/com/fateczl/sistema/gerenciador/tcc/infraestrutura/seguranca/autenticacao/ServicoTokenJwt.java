@@ -18,7 +18,7 @@ public class ServicoTokenJwt {
 
     public ServicoTokenJwt(
             @Value("${jwt.secret}") String segredo,
-            @Value("${jwt.expiration.ms") long tempoDeExpiracao
+            @Value("${jwt.expiration.ms}") long tempoDeExpiracao
     ) {
         byte[] bytesChave = segredo.getBytes();
         this.chaveDeAssinatura = Keys.hmacShaKeyFor(bytesChave);
