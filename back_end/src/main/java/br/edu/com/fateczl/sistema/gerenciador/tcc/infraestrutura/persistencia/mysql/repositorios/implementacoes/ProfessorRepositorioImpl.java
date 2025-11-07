@@ -1,9 +1,12 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
         .mysql.repositorios.implementacoes;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.mapeadores.ProfessorMapeador;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.repositorios.spring.ProfessorRepositorioSpring;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Professor;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.mapeadores.ProfessorMapeador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.repositorios.spring.ProfessorRepositorioSpring;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Professor;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .ProfessorRepositorio;
 
