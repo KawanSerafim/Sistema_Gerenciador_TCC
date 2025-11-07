@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class ManipuladorExcecaoGlobal {
+public class ManipuladorGlobalExcecao {
     private static final Logger log = LoggerFactory
-            .getLogger(ManipuladorExcecaoGlobal.class);
+            .getLogger(ManipuladorGlobalExcecao.class);
 
     @ExceptionHandler(ExcecaoDominio.class)
     public ResponseEntity<ErroDominioResposta> manipuladorExcecaoDominio(
