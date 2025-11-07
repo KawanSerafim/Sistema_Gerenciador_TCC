@@ -1,10 +1,16 @@
-package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.repositorios.implementacoes;
+package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.repositorios.implementacoes;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.mapeadores.AdministradorMapeador;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.modelos.AdministradorModelo;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.repositorios.spring.AdministradorRepositorioSpring;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Administrador;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios.AdministradorRepositorio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.mapeadores.AdministradorMapeador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.modelos.AdministradorModelo;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.repositorios.spring.AdministradorRepositorioSpring;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Administrador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
+        .AdministradorRepositorio;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
