@@ -4,4 +4,4 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.excecoes
         .CodigoErro;
 
-public record ErroInfraResposta(CodigoErro codigo, String mensagem) {}
+public record ErroClienteResposta(CodigoErro codigo, String mensagem) {}
