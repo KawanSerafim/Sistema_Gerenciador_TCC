@@ -1,0 +1,23 @@
+ package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes;
+
+public enum CodigoErro {
+    // Validação:
+    VD_001_CAMPO_OBRIGATORIO,
+    VD_002_FORMATO_INVALIDO,
+    VD_003_ASSOCIACAO_OBRIGATORIA,
+    VD_004_DATA_INVALIDA,
+    VD_005_PADRAO_INVALIDO,
+    VD_006_COLECAO_OBRIGATORIA_VAZIA,
+    VD_007_CAMPO_NAO_SUPORTADO,
+
+    // Regras de Negócio:
+    RN_001_ESTADO_INVALIDO_PARA_ACAO,
+    RN_002_REGISTRO_DUPLICADO,
+    RN_003_CONDICAO_ACAO_NAO_ATENDIDA,
+
+    // Autorização:
+    AU_001_PERMISSAO_NEGADA,
+
+    // Genérico:
+    GN_001_REGISTRO_NAO_ENCONTRADO
+}
