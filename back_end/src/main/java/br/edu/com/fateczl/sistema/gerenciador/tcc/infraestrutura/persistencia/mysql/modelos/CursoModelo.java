@@ -17,8 +17,8 @@ public class CursoModelo {
     private ParametrosCursoModelo parametros;
 
     @OneToOne
-    @JoinColumn(name = "id_coordenador_curso", nullable = false)
-    private ProfessorModelo coordenadorCurso;
+    @JoinColumn(name = "id_coordenador", nullable = false)
+    private ProfessorModelo coordenador;
 
     public CursoModelo() {}
 
@@ -46,11 +46,11 @@ public class CursoModelo {
         this.parametros = parametros;
     }
 
-    public ProfessorModelo getCoordenadorCurso() {
-        return coordenadorCurso;
+    public ProfessorModelo getCoordenador() {
+        return coordenador;
     }
 
-    public void setCoordenadorCurso(ProfessorModelo coordenadorCurso) {
-        this.coordenadorCurso = coordenadorCurso;
+    public void setCoordenador(ProfessorModelo coordenador) {
+        this.coordenador = coordenador;
     }
 }
