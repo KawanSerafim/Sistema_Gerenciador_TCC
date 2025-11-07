@@ -25,7 +25,7 @@ public class AlunoModelo {
     private ContaUsuarioModelo contaUsuario;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @Column(name = "status_aluno", nullable = false, length = 10)
     private StatusAluno status;
 
     @ManyToMany(fetch = FetchType.EAGER)
