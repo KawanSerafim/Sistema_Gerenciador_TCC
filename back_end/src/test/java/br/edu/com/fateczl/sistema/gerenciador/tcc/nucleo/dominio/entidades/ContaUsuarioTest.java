@@ -28,7 +28,7 @@ public class ContaUsuarioTest {
     }
 
     @Test
-    void emDefinirEmailDeveLancarExcecaoDominioQuandoNomeENulo() {
+    void emDefinirEmailDeveLancarExcecaoDominioQuandoEmailENulo() {
         var contaUsuario = new ContaUsuario();
 
         String mensagem = "Conta de Usuário: Validação falhou. O campo "
@@ -46,7 +46,7 @@ public class ContaUsuarioTest {
     }
 
     @Test
-    void emDefinirEmailDeveLancarExcecaoDominioQuandoNomeEVazio() {
+    void emDefinirEmailDeveLancarExcecaoDominioQuandoEmailEVazio() {
         var contaUsuario = new ContaUsuario();
 
         String mensagem = "Conta de Usuário: Validação falhou. O campo "
@@ -119,7 +119,7 @@ public class ContaUsuarioTest {
     }
 
     @Test
-    void emDefinirStatusDeveLancarExcecaoDominioQuandoSenhaENulo() {
+    void emDefinirStatusDeveLancarExcecaoDominioQuandoStatusENulo() {
         var contaUsuario = new ContaUsuario();
 
         String mensagem = "Conta de Usuário: Validação falhou. O campo "
