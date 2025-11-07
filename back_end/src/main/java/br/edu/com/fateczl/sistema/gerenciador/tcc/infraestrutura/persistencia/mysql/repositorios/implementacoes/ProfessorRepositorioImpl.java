@@ -9,9 +9,11 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Professor;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .ProfessorRepositorio;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class ProfessorRepositorioImpl implements ProfessorRepositorio {
     private final ProfessorRepositorioSpring repositorioSpring;
     private final ProfessorMapeador mapeador;
