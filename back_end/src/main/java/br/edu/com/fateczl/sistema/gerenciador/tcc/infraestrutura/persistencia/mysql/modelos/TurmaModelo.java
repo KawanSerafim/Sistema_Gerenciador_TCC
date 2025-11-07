@@ -26,8 +26,8 @@ public class TurmaModelo {
     private Turno turno;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_coordenador_tg", nullable = false)
-    private ProfessorModelo coordenadorTg;
+    @JoinColumn(name = "id_professor_tg", nullable = false)
+    private ProfessorModelo professorTg;
 
     @Column(nullable = false)
     private Integer ano;
@@ -69,12 +69,12 @@ public class TurmaModelo {
         this.turno = turno;
     }
 
-    public ProfessorModelo getCoordenadorTg() {
-        return coordenadorTg;
+    public ProfessorModelo getProfessorTg() {
+        return professorTg;
     }
 
-    public void setCoordenadorTg(ProfessorModelo coordenadorTg) {
-        this.coordenadorTg = coordenadorTg;
+    public void setProfessorTg(ProfessorModelo professorTg) {
+        this.professorTg = professorTg;
     }
 
     public Integer getAno() {
