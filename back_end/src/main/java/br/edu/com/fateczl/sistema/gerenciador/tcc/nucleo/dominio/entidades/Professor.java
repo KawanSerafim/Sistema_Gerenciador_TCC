@@ -2,7 +2,8 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades;
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .CargoProfessor;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
+        .StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
