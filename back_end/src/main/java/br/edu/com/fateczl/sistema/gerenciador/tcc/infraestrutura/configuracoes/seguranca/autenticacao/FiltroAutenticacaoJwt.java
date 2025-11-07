@@ -1,5 +1,5 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
-        .autenticacao;
+        .seguranca.autenticacao;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

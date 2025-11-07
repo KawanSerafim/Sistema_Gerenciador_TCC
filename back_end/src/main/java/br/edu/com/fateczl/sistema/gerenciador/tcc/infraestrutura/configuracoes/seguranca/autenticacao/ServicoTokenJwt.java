@@ -1,5 +1,5 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
-        .autenticacao;
+        .seguranca.autenticacao;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
