@@ -1,5 +1,4 @@
-package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
-        .requisicoes;
+package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.respostas;
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .CargoProfessor;
