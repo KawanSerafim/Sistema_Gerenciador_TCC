@@ -1,8 +1,11 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes.CodigoErro;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes.ExcecaoDominio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
+        .StatusContaUsuario;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
+        .CodigoErro;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
+        .ExcecaoDominio;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
