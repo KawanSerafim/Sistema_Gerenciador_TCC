@@ -1,7 +1,9 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.excecoes;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.respostas.ErroDominioResposta;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.respostas.ErroClienteResposta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
+        .respostas.ErroDominioResposta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
+        .respostas.ErroClienteResposta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
 import org.slf4j.Logger;
