@@ -1,7 +1,10 @@
-package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.mapeadores;
+package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.mapeadores;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.modelos.TurmaModelo;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Turma;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.modelos.TurmaModelo;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Turma;
 import org.springframework.stereotype.Component;
 
 @Component
