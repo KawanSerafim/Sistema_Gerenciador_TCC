@@ -8,5 +8,7 @@ import java.util.Optional;
 
 public interface ProfessorRepositorioSpring
         extends JpaRepository<ProfessorModelo, Integer> {
+    Optional<ProfessorModelo> findByMatricula(String matricula);
+
     Optional<ProfessorModelo> findByContaUsuarioEmail(String email);
 }
