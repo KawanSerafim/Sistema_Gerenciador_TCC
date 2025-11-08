@@ -3,7 +3,8 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
         .mysql.modelos.ContaUsuarioModelo;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia.mysql.modelos.ProfessorModelo;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.modelos.ProfessorModelo;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .ContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
