@@ -54,7 +54,7 @@ public class ValidarCodigoServico implements ValidarCodigoCaso {
                         CodigoErro.GN_001_REGISTRO_NAO_ENCONTRADO,
                         "Conta Usuário: Não encontrado. Nenhuma entidade "
                         + "localizada com o critério: [código de confirmação]"
-                        + " = '[código de confirmação informado]'."
+                        + " = '[" + entrada.codigo() + "]'."
                 ));
 
         var administradorOpt = pegarAdministrador(email);
