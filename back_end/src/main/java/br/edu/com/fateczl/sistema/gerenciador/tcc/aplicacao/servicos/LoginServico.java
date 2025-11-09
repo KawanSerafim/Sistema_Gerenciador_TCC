@@ -74,10 +74,15 @@ public class LoginServico implements LoginCaso {
                     CodigoErro.AU_002_CREDENCIAS_INVALIDAS,
                     "Autenticação: Falha na tentativa de login para o usuário "
                     + " [" + entrada.email() + "]. (Motivo: Credenciais "
-                    + "inválidas, IP: [" + entrada.])"
+                    + "inválidas, IP: [" + entrada.ipRequisicao() + "])"
             );
         }
-        validarSenha(senha, entrada.senha(), entrada.email());
+        validarSenha(
+                senha,
+                entrada.senha(),
+                entrada.email(),
+                entrada.ipRequisicao()
+        );
 
         String token = servicoTokenJwt.gerarToken(entrada.email());
 
@@ -97,7 +102,8 @@ public class LoginServico implements LoginCaso {
     private void validarSenha(
             String senhaUsuario,
             String senhaRequisicao,
-            String email
+            String email,
+            String ipRequisicao
     ) {
         boolean senhaBateu = Objects.equals(senhaUsuario, senhaRequisicao);
 
@@ -106,7 +112,7 @@ public class LoginServico implements LoginCaso {
                     CodigoErro.AU_002_CREDENCIAS_INVALIDAS,
                     "Autenticação: Falha na tentativa de login para o usuário "
                     + " [" + email + "]. (Motivo: Credenciais inválidas, IP: "
-                    + "[IP_Address])"
+                    + "[" + ipRequisicao + "])"
             );
         }
     }
