@@ -1,7 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso;
 
 public interface LoginCaso {
-    record Entrada(String email, String senha, String IpRequisicao) {}
+    record Entrada(String email, String senha, String ipRequisicao) {}
 
     record Saida(String token, String tipoToken) {}
 
