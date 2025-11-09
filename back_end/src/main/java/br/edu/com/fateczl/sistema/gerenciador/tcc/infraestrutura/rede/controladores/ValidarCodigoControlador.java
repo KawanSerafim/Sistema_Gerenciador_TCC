@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("validar-codigo/api")
+@RequestMapping("/validar-codigo/api")
 @CrossOrigin(origins = "*")
 public class ValidarCodigoControlador {
     private final ValidarCodigoCaso validarCodigoCaso;
