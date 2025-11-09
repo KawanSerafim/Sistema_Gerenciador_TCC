@@ -1,7 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
-        .EnviarEmailCaso;
+        .EnviarEmailConfirmacaoCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .ContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Random;
 
 @Service
-public class EnviarEmailConfirmacaoServico implements EnviarEmailCaso {
+public class EnviarEmailConfirmacaoServico implements EnviarEmailConfirmacaoCaso {
     private final CacheCodigoPorta cacheCodigo;
     private final RemetenteEmailPorta remetenteEmail;
 
