@@ -1,5 +1,6 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
+import br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.eventos.UsuarioPedeEmailConfirmacaoEvento;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .CadastrarProfessorCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
@@ -22,6 +23,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AlunoRepositorio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .ProfessorRepositorio;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -32,17 +34,20 @@ public class CadastrarProfessorServico implements CadastrarProfessorCaso {
     private final ProfessorRepositorio professorRepositorio;
     private final AlunoRepositorio alunoRepositorio;
     private final CriptografoSenhasPorta criptografoSenhas;
+    private final ApplicationEventPublisher publicadoraEvento;
 
     public CadastrarProfessorServico(
             AdministradorRepositorio administradorRepositorio,
             ProfessorRepositorio professorRepositorio,
             AlunoRepositorio alunoRepositorio,
-            CriptografoSenhasPorta criptografoSenhas
+            CriptografoSenhasPorta criptografoSenhas,
+            ApplicationEventPublisher publicadoraEvento
     ) {
         this.administradorRepositorio = administradorRepositorio;
         this.professorRepositorio = professorRepositorio;
         this.alunoRepositorio = alunoRepositorio;
         this.criptografoSenhas = criptografoSenhas;
+        this.publicadoraEvento = publicadoraEvento;
     }
 
     @Override
@@ -50,6 +55,12 @@ public class CadastrarProfessorServico implements CadastrarProfessorCaso {
         validarUnicidadeEmail(entrada.email());
         var professor = pegarProfessor(entrada);
         var professorSalvo = professorRepositorio.salvar(professor);
+
+        publicadoraEvento.publishEvent(
+                new UsuarioPedeEmailConfirmacaoEvento(
+                        professorSalvo.getEmailContaUsuario()
+                )
+        );
 
         return new Saida(
                 professorSalvo.getId(),
