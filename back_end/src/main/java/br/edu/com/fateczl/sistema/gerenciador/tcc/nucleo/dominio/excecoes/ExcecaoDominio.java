@@ -51,8 +51,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: VD_001_CAMPO_OBRIGATORIO
  * Mensagem (Log): [Entidade] (ID: [ID_Entidade]): Validação falhou. O campo
  * obrigatório '[nome_campo]' estava nulo ou vazio.
- * Exemplo (Log):  Cliente (ID: 123): Validação falhou. O campo
- * obrigatório 'Nome' estava nulo ou vazio.
  *
  * -----------------------------------------------------------------------------
  *
@@ -61,8 +59,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: VD_002_FORMATO_INVALIDO
  * Mensagem (Log): [Entidade] (ID: [ID_Entidade]): O campo '[nome_campo]'
  * possui formato inválido. (ValorRecebido: '[valor_invalido]')
- * Exemplo (Log):  Cliente (ID: 123): O campo 'Email' possui formato
- * inválido. (ValorRecebido: 'usuario-sem-arroba.com')
  *
  * -----------------------------------------------------------------------------
  *
@@ -71,8 +67,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: VD_003_ASSOCIACAO_OBRIGATORIA
  * Mensagem (Log): [Entidade A] (ID: [ID_Entidade_A]): Associação obrigatória
  * ausente. Deve estar associado a um(a) '[Entidade B]'.
- * Exemplo (Log):  Pedido (ID: 456): Associação obrigatória ausente.
- * Deve estar associado a um 'Cliente'.
  *
  * -----------------------------------------------------------------------------
  *
@@ -81,8 +75,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: GN_001_REGISTRO_NAO_ENCONTRADO
  * Mensagem (Log): [Entidade]: Não encontrado. Nenhuma entidade localizada
  * com o critério: [campo_busca] = '[valor_busca]'.
- * Exemplo (Log): Produto: Não encontrado. Nenhuma entidade localizada
- * com o critério: SKU = 'ABC-999-XYZ'.
  *
  * -----------------------------------------------------------------------------
  *
@@ -91,8 +83,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: AU_001_PERMISSAO_NEGADA
  * Mensagem (Log): Autorização: Permissão negada para Usuário (ID: [ID_Usuario]).
  * (Ação: '[Ação_Tentada]', Recurso: '[Entidade_Alvo](ID:[ID])')
- * Exemplo (Log): Autorização: Permissão negada para Usuário (ID: 789).
- * (Ação: 'ExcluirPedido', Recurso: 'Pedido(ID:456)')
  *
  * -----------------------------------------------------------------------------
  *
@@ -101,8 +91,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: RN_001_ESTADO_INVALIDO_PARA_ACAO
  * Mensagem (Log): [Entidade] (ID: [ID]): Ação '[Ação]' falhou devido a estado
  * inválido. (EstadoAtual: '[Atual]', Esperado: '[Esperado]')
- * Exemplo (Log): Pedido (ID: 456): Ação 'Cancelar' falhou devido a estado
- * inválido. (EstadoAtual: 'ENVIADO', Esperado: 'PENDENTE')
  *
  * -----------------------------------------------------------------------------
  *
@@ -111,8 +99,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: VD_004_DATA_INVALIDA
  * Mensagem (Log): [Entidade] (ID: [ID]): Validação de data falhou p/ o campo
  * '[Nome_Campo_Data]'. (Valor: '[Valor]', Condição: '[Motivo]')
- * Exemplo (Log):  Agendamento (ID: 777): Validação de data falhou p/ o campo
- * 'DataInicio'. (Valor: '2025-10-20', Condição: 'no passado')
  *
  * -----------------------------------------------------------------------------
  *
@@ -121,8 +107,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: VD_005_PADRAO_INVALIDO
  * Mensagem (Log): [Entidade] (ID: [ID]): O campo '[nome_campo]' não segue o
  * padrão esperado. (Valor: '[valor]', Padrão: '[padrão]')
- * Exemplo (Log): Produto (ID: 123): O campo 'SKU' não segue o padrão
- * esperado. (Valor: 'SKU-ERRADO', Padrão: 'XXX-NNN')
  *
  * -----------------------------------------------------------------------------
  *
@@ -131,8 +115,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: RN_002_REGISTRO_DUPLICADO
  * Mensagem (Log): [Entidade]: Falha de unicidade. Já existe um registro
  * com [nome_campo_unico] = '[valor_duplicado]'.
- * Exemplo (Log): Cliente: Falha de unicidade. Já existe um registro
- * com CPF = '111.222.333-44'.
  *
  * -----------------------------------------------------------------------------
  *
@@ -141,8 +123,6 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: RN_003_CONDICAO_ACAO_NAO_ATENDIDA
  * Mensagem (Log): [Entidade] (ID: [ID]): Ação '[Ação]' não pode ser executada,
  * pois o campo obrigatório '[nome_campo_nulo]' está nulo.
- * Exemplo (Log): Pedido (ID: 456): Ação 'Enviar' não pode ser executada,
- * pois o campo obrigatório 'EnderecoEntrega' está nulo.
  *
  * -----------------------------------------------------------------------------
  *
@@ -151,18 +131,29 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: VD_006_COLECAO_OBRIGATORIA_VAZIA
  * Mensagem (Log): [Entidade] (ID: [ID]): Validação de coleção falhou. A
  * entidade deve ter pelo menos um(a) '[Nome_Item]' associado.
- * Exemplo (Log):  Pedido (ID: 456): Validação de coleção falhou. A
- * entidade deve ter pelo menos um 'ItemPedido' associado.
  *
- * ------------------------------------------------------------------------------
+ * -----------------------------------------------------------------------------
  *
  * 12. Campo não suportado
  * -------------------
- * ErrorCode: VD_007_CAMPO_NAO_SUPORTADO
+ * CodigoErro: VD_007_CAMPO_NAO_SUPORTADO
  * Mensagem (Log): [Entidade] (Contexto: [ID/Ação]): O campo
  * '[nome_campo_invalido]' não é suportado [motivo/contexto].
- * Exemplo (Log):  Pedido (Contexto: Ordenação): O campo 'nomeCliente'
- * não é suportado.
  *
+ * -----------------------------------------------------------------------------
+ *
+ * 13. Credenciais inválidas
+ * -------------------
+ * CodigoErro: AU_002_CREDENCIAS_INVALIDAS
+ * Mensagem (Log): Autenticação: Falha na tentativa de login para o usuário
+ * [email_tentado]. (Motivo: Credenciais inválidas, IP: [IP_Address])
+ *
+ * -----------------------------------------------------------------------------
+ *
+ * 14. Conta inválida
+ * -------------------
+ * CodigoErro: AU_003_CONTA_INVALIDA
+ * Mensagem (Log): Autenticação: Falha na tentativa de login para o usuário
+ * [email_tentado]. (Motivo: Conta de estádo inválido, IP: [IP_Address])
  * =============================================================================
  */

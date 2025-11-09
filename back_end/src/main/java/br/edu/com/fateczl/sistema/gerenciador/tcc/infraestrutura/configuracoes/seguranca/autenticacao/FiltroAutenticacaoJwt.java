@@ -22,13 +22,13 @@ import java.io.IOException;
 
 @Component
 public class FiltroAutenticacaoJwt extends OncePerRequestFilter {
-    private final ServicoTokenJwt servicoTokenJwt;
+    private final GeradorTokenAdaptador servicoTokenJwt;
     private final UserDetailsService servicoDetalhesUsuario;
     private final Logger logger = LoggerFactory
             .getLogger(FiltroAutenticacaoJwt.class);
 
     public FiltroAutenticacaoJwt(
-            ServicoTokenJwt servicoTokenJwt,
+            GeradorTokenAdaptador servicoTokenJwt,
             UserDetailsService servicoDetalhesUsuario
     ) {
         this.servicoTokenJwt = servicoTokenJwt;
