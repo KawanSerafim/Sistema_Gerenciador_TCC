@@ -25,6 +25,11 @@ public class ConfiguracaoSeguranca {
                 .authorizeHttpRequests(autorizacao -> autorizacao
                         .requestMatchers(
                                 HttpMethod.POST,
+                                "enviar-email/api/enviar"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
                                 "login/api"
                         ).permitAll()
 
