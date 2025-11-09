@@ -1,3 +1,3 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.eventos;
 
-public record UsuarioRequerEmailConfirmacaoEvento(String email) {}
+public record UsuarioPedeEmailConfirmacaoEvento(String email) {}
