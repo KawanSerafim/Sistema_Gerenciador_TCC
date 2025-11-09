@@ -18,6 +18,7 @@ public enum CodigoErro {
     // Autorização:
     AU_001_PERMISSAO_NEGADA,
     AU_002_CREDENCIAS_INVALIDAS,
+    AU_003_CONTA_INVALIDA,
 
     // Genérico:
     GN_001_REGISTRO_NAO_ENCONTRADO

@@ -148,5 +148,12 @@ public class ExcecaoDominio extends RuntimeException {
  * Mensagem (Log): Autenticação: Falha na tentativa de login para o usuário
  * [email_tentado]. (Motivo: Credenciais inválidas, IP: [IP_Address])
  *
+ * -----------------------------------------------------------------------------
+ *
+ * 14. Conta inválida
+ * -------------------
+ * CodigoErro: AU_003_CONTA_INVALIDA
+ * Mensagem (Log): Autenticação: Falha na tentativa de login para o usuário
+ * [email_tentado]. (Motivo: Conta de estádo inválido, IP: [IP_Address])
  * =============================================================================
  */
