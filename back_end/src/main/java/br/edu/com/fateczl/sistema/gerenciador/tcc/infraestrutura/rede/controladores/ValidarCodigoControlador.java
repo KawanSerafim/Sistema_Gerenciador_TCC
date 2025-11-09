@@ -5,7 +5,6 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .requisicoes.ValidarCodigoRequisicao;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .ValidarCodigoCaso;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
