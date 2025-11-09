@@ -16,7 +16,8 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.CriptografoSenhasPorta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
+        .CriptografoSenhasPorta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AdministradorRepositorio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
