@@ -57,10 +57,10 @@ public class EnviarEmailConfirmacaoServico implements EnviarEmailConfirmacaoCaso
         return
             "Olá e seja bem-vindo!\n\n"
             + "Você está a um passo de concluir o seu cadastro, e para isso "
-            + "é preciso inserir o token abaixo no formulário.\n\n"
-            + "Token: " + codigo + "\n\n"
-            + "Atenção: Este token de confirmação é válido por apenas "
+            + "é preciso inserir o código abaixo no formulário.\n\n"
+            + "Código: " + codigo + "\n\n"
+            + "Atenção: Este código de confirmação é válido por apenas "
             + "15 minutos. Se ele expirar, será preciso solicitar um novo "
-            + "token.";
+            + "código.";
     }
 }
