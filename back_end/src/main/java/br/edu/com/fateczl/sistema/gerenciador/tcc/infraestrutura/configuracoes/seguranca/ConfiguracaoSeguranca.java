@@ -25,17 +25,22 @@ public class ConfiguracaoSeguranca {
                 .authorizeHttpRequests(autorizacao -> autorizacao
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "enviar-email/api/enviar"
-                        ).permitAll()
-
-                        .requestMatchers(
-                                HttpMethod.POST,
                                 "login/api"
                         ).permitAll()
 
                         .requestMatchers(
                                 HttpMethod.POST,
                                 "/professores/api/cadastrar"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "enviar-email/api/enviar"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "validar-codigo/api"
                         ).permitAll()
 
                         .anyRequest().authenticated()
