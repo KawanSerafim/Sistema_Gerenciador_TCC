@@ -1,7 +1,8 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
         .seguranca.criptografia;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.CriptografoSenhasPorta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
+        .CriptografoSenhasPorta;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
