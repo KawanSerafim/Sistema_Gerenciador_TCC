@@ -24,7 +24,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AlunoRepositorio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .ProfessorRepositorio;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
