@@ -1,6 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
         .seguranca;
 
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableCaching
 public class ConfiguracaoSeguranca {
 
     @Bean
