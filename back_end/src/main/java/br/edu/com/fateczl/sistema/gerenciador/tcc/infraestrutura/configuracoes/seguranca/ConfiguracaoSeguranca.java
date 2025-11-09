@@ -20,6 +20,11 @@ public class ConfiguracaoSeguranca {
                 .authorizeHttpRequests(autorizacao -> autorizacao
                         .requestMatchers(
                                 HttpMethod.POST,
+                                "login/api"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
                                 "/professores/api/cadastrar"
                         ).permitAll()
 
