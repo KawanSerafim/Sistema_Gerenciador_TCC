@@ -16,6 +16,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.CriptografoSenhasPorta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AdministradorRepositorio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
@@ -48,6 +49,9 @@ public class CadastrarProfessorServicoTest {
     @Mock
     private AlunoRepositorio alunoRepositorio;
 
+    @Mock
+    private CriptografoSenhasPorta criptografoSenhas;
+
     @InjectMocks
     private CadastrarProfessorServico servico;
 
@@ -73,6 +77,7 @@ public class CadastrarProfessorServicoTest {
     @Test
     void deveCadastrarProfessorComDadosValidos() {
         var contaUsuario = mock(ContaUsuario.class);
+        String senhaCriptografada = "senha criptografada";
 
         var professorSalvo = new Professor(
                 entrada.nome(),
@@ -84,6 +89,8 @@ public class CadastrarProfessorServicoTest {
 
         when(professorRepositorio.salvar(any(Professor.class)))
                 .thenReturn(professorSalvo);
+        when(criptografoSenhas.criptografar(entrada.senha()))
+                .thenReturn(senhaCriptografada);
 
         var saida = servico.executar(entrada);
 
