@@ -5,9 +5,11 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class CacheCodigoAdaptador implements CacheCodigoPorta {
     private static final String NOME_CACHE = "codigosEmail";
 
