@@ -1,6 +1,8 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
         .seguranca.autenticacao;
 
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
+        .GeradorTokenPorta;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,11 +15,11 @@ import java.util.Date;
 import java.util.function.Function;
 
 @Component
-public class ServicoTokenJwt {
+public class GeradorTokenAdaptador implements GeradorTokenPorta {
     private final Key chaveDeAssinatura;
     private final long tempoDeExpiracao;
 
-    public ServicoTokenJwt(
+    public GeradorTokenAdaptador(
             @Value("${jwt.secret}") String segredo,
             @Value("${jwt.expiration.ms}") long tempoDeExpiracao
     ) {
@@ -26,6 +28,7 @@ public class ServicoTokenJwt {
         this.tempoDeExpiracao = tempoDeExpiracao;
     }
 
+    @Override
     public String gerarToken(String emailUsuario) {
         Date agora = new Date();
         Date dataExpiracao = new Date(agora.getTime() + tempoDeExpiracao);
