@@ -14,6 +14,8 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
+        .CriptografoSenhasPorta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AdministradorRepositorio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
@@ -29,15 +31,18 @@ public class CadastrarProfessorServico implements CadastrarProfessorCaso {
     private final AdministradorRepositorio administradorRepositorio;
     private final ProfessorRepositorio professorRepositorio;
     private final AlunoRepositorio alunoRepositorio;
+    private final CriptografoSenhasPorta criptografoSenhas;
 
     public CadastrarProfessorServico(
             AdministradorRepositorio administradorRepositorio,
             ProfessorRepositorio professorRepositorio,
-            AlunoRepositorio alunoRepositorio
+            AlunoRepositorio alunoRepositorio,
+            CriptografoSenhasPorta criptografoSenhas
     ) {
         this.administradorRepositorio = administradorRepositorio;
         this.professorRepositorio = professorRepositorio;
         this.alunoRepositorio = alunoRepositorio;
+        this.criptografoSenhas = criptografoSenhas;
     }
 
     @Override
@@ -87,7 +92,9 @@ public class CadastrarProfessorServico implements CadastrarProfessorCaso {
             );
         }
 
-        var contaUsuario = new ContaUsuario(entrada.email(), entrada.senha());
+        String senha = criptografoSenhas.criptografar(entrada.senha());
+
+        var contaUsuario = new ContaUsuario(entrada.email(), senha);
 
         return new Professor(
                 entrada.nome(),
