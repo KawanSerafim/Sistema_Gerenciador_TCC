@@ -74,7 +74,7 @@ public class LoginServico implements LoginCaso {
                     CodigoErro.AU_002_CREDENCIAS_INVALIDAS,
                     "Autenticação: Falha na tentativa de login para o usuário "
                     + " [" + entrada.email() + "]. (Motivo: Credenciais "
-                    + "inválidas, IP: [IP_Address])"
+                    + "inválidas, IP: [" + entrada.])"
             );
         }
         validarSenha(senha, entrada.senha(), entrada.email());
