@@ -1,6 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
         .seguranca;
 
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableCaching
 public class ConfiguracaoSeguranca {
 
     @Bean
@@ -25,17 +27,22 @@ public class ConfiguracaoSeguranca {
                 .authorizeHttpRequests(autorizacao -> autorizacao
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "enviar-email/api/enviar"
-                        ).permitAll()
-
-                        .requestMatchers(
-                                HttpMethod.POST,
                                 "login/api"
                         ).permitAll()
 
                         .requestMatchers(
                                 HttpMethod.POST,
                                 "/professores/api/cadastrar"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "enviar-email/api/enviar"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "validar-codigo/api"
                         ).permitAll()
 
                         .anyRequest().authenticated()

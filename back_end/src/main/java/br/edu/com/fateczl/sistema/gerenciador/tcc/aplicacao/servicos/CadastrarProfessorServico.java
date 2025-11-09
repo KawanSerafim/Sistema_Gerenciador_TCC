@@ -1,6 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.eventos.UsuarioPedeEmailConfirmacaoEvento;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.eventos
+        .UsuarioPedeEmailConfirmacaoEvento;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .CadastrarProfessorCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
@@ -23,6 +24,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AlunoRepositorio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .ProfessorRepositorio;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +53,7 @@ public class CadastrarProfessorServico implements CadastrarProfessorCaso {
     }
 
     @Override
+    @Transactional
     public Saida executar(Entrada entrada) {
         validarUnicidadeEmail(entrada.email());
         var professor = pegarProfessor(entrada);
