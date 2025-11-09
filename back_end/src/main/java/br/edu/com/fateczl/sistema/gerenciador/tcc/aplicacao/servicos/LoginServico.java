@@ -1,46 +1,31 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
-        .seguranca.autenticacao.ServicoTokenJwt;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso.LoginCaso;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
-        .Administrador;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
-        .Aluno;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
-        .Professor;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
-        .AdministradorRepositorio;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
-        .AlunoRepositorio;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
-        .ProfessorRepositorio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
+        .GeradorTokenPorta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
+        .ProvedorAutenticacaoPorta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.excecoes
+        .ExcecaoContaInvalida;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.excecoes
+        .ExcecaoCredencialInvalida;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class LoginServico implements LoginCaso {
-    private final AdministradorRepositorio administradorRepositorio;
-    private final ProfessorRepositorio professorRepositorio;
-    private final AlunoRepositorio alunoRepositorio;
-    private final ServicoTokenJwt servicoTokenJwt;
+    private final ProvedorAutenticacaoPorta provedorAutenticacao;
+    private final GeradorTokenPorta geradorToken;
 
     public LoginServico(
-            AdministradorRepositorio administradorRepositorio,
-            ProfessorRepositorio professorRepositorio,
-            AlunoRepositorio alunoRepositorio,
-            ServicoTokenJwt servicoTokenJwt
+            ProvedorAutenticacaoPorta provedorAutenticacao,
+            GeradorTokenPorta geradorToken
     ) {
-        this.administradorRepositorio = administradorRepositorio;
-        this.professorRepositorio = professorRepositorio;
-        this.alunoRepositorio = alunoRepositorio;
-        this.servicoTokenJwt = servicoTokenJwt;
+        this.provedorAutenticacao = provedorAutenticacao;
+        this.geradorToken = geradorToken;
     }
 
     @Override
@@ -48,45 +33,28 @@ public class LoginServico implements LoginCaso {
         verificarCampoObrigatorio(entrada.email());
         verificarCampoObrigatorio(entrada.senha());
 
-        var administradorOpt = pegarAdministradorOpt(entrada.email());
-        var professorOpt = pegarProfessorOpt(entrada.email());
-        var alunoOpt = pegarAlunoOpt(entrada.email());
+        try {
+            provedorAutenticacao.autenticar(entrada.email(), entrada.senha());
 
-        String senha = null;
-
-        if(administradorOpt.isPresent()) {
-            var administrador = administradorOpt.get();
-            senha = administrador.getSenhaContaUsuario();
-        }
-
-        if(professorOpt.isPresent()) {
-            var professor = professorOpt.get();
-            senha = professor.getSenhaContaUsuario();
-        }
-
-        if(alunoOpt.isPresent()) {
-            var aluno = alunoOpt.get();
-            senha = aluno.getSenhaContaUsuario();
-        }
-
-        if(senha == null) {
+            String token = geradorToken.gerarToken(entrada.email());
+            return new Saida(token, "Bearer");
+        } catch(ExcecaoCredencialInvalida ex) {
             throw new ExcecaoDominio(
                     CodigoErro.AU_002_CREDENCIAS_INVALIDAS,
                     "Autenticação: Falha na tentativa de login para o usuário "
                     + " [" + entrada.email() + "]. (Motivo: Credenciais "
-                    + "inválidas, IP: [" + entrada.ipRequisicao() + "])"
+                    + "inválidas, IP: [" + entrada.ipRequisicao() + "])",
+                    ex
+            );
+        } catch(ExcecaoContaInvalida ex) {
+            throw new ExcecaoDominio(
+                    CodigoErro.AU_003_CONTA_INVALIDA,
+                    "Autenticação: Falha na tentativa de login para o usuário "
+                    + " [" + entrada.email() + "]. (Motivo: Conta de estádo "
+                    + "inválido, IP: [" + entrada.ipRequisicao() + "])",
+                    ex
             );
         }
-        validarSenha(
-                senha,
-                entrada.senha(),
-                entrada.email(),
-                entrada.ipRequisicao()
-        );
-
-        String token = servicoTokenJwt.gerarToken(entrada.email());
-
-        return new Saida(token, "Bearer");
     }
 
     private void verificarCampoObrigatorio(String campo) {
@@ -97,35 +65,5 @@ public class LoginServico implements LoginCaso {
                     + "'senha' estava nulo ou vazio."
             );
         }
-    }
-
-    private void validarSenha(
-            String senhaUsuario,
-            String senhaRequisicao,
-            String email,
-            String ipRequisicao
-    ) {
-        boolean senhaBateu = Objects.equals(senhaUsuario, senhaRequisicao);
-
-        if(!senhaBateu) {
-            throw new ExcecaoDominio(
-                    CodigoErro.AU_002_CREDENCIAS_INVALIDAS,
-                    "Autenticação: Falha na tentativa de login para o usuário "
-                    + " [" + email + "]. (Motivo: Credenciais inválidas, IP: "
-                    + "[" + ipRequisicao + "])"
-            );
-        }
-    }
-
-    private Optional<Administrador> pegarAdministradorOpt(String email) {
-        return administradorRepositorio.buscarPorEmail(email);
-    }
-
-    private Optional<Professor> pegarProfessorOpt(String email) {
-        return professorRepositorio.buscarPorEmail(email);
-    }
-
-    private Optional<Aluno> pegarAlunoOpt(String email) {
-        return alunoRepositorio.buscarPorEmail(email);
     }
 }
