@@ -20,16 +20,12 @@ public class ContaUsuario {
         this.setStatus(StatusContaUsuario.VERIFICACAO_PENDENTE);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    public static void validarFormatoEmail(String email) throws ExcecaoDominio {
         if(email == null || email.isBlank()) {
             throw new ExcecaoDominio(
                     CodigoErro.VD_001_CAMPO_OBRIGATORIO,
                     "Conta de Usuário: Validação falhou. O campo obrigatório "
-                    + "'email' estava nulo ou vazio."
+                            + "'email' estava nulo ou vazio."
             );
         }
 
@@ -37,9 +33,17 @@ public class ContaUsuario {
             throw new ExcecaoDominio(
                     CodigoErro.VD_002_FORMATO_INVALIDO,
                     "Conta de Usuário: O campo 'email' possui formato inválido."
-                    + " (Valor Recebido: " + email + ")"
+                            + " (Valor Recebido: " + email + ")"
             );
         }
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        validarFormatoEmail(email);
         this.email = email;
     }
 
