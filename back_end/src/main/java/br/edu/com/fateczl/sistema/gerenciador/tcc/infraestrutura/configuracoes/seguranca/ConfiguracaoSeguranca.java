@@ -4,6 +4,8 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.configuracoes
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers
         .AbstractHttpConfigurer;
@@ -32,5 +34,12 @@ public class ConfiguracaoSeguranca {
                 );
 
         return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager gerenciadorAutenticacao(
+            AuthenticationConfiguration configuracaoAutenticacao
+    ) throws Exception {
+        return configuracaoAutenticacao.getAuthenticationManager();
     }
 }
