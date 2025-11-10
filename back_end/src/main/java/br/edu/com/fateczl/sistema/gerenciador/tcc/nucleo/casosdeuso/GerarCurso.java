@@ -1,7 +1,5 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
-        .Professor;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
