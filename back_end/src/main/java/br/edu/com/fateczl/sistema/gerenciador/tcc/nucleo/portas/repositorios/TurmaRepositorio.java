@@ -11,7 +11,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
 public interface TurmaRepositorio {
     Turma salvar(Turma turma);
 
-    Turma buscarPorCursoDisciplinaTurnoAnoSemestre(
+    Turma buscarPorCursoEDisciplinaETurnoEAnoESemestre(
             Curso curso,
             Disciplina disciplina,
             Turno turno,
