@@ -1,6 +1,6 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso.GerarCurso;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso.GerarCursoCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Curso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class GerarCursoServico implements GerarCurso {
+public class GerarCursoServico implements GerarCursoCaso {
     private final CursoRepositorio cursoRepositorio;
     private final ProfessorRepositorio professorRepositorio;
 
