@@ -186,4 +186,8 @@ public class Turma {
         }
         this.semestre = semestre;
     }
+
+    public Long getIdProfessorTg() {
+        return professorTg.getId();
+    }
 }
