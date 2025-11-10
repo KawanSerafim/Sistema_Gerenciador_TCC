@@ -7,7 +7,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
 
 import java.util.List;
 
-public interface GerarCurso {
+public interface GerarCursoCaso {
     record Entrada(
             String nome,
             List<Turno> turnos,
