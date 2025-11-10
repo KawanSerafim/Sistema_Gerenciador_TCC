@@ -15,6 +15,7 @@ public class ParametrosCursoMapeador {
         var parametrosCursoModelo = new ParametrosCursoModelo();
         parametrosCursoModelo.setDisciplinas(dominio.getDisciplinas());
         parametrosCursoModelo.setTurnos(dominio.getTurnos());
+        parametrosCursoModelo.setMaxAlunosGrupo(dominio.getMaxAlunosGrupo());
 
         return parametrosCursoModelo;
     }
@@ -25,6 +26,7 @@ public class ParametrosCursoMapeador {
         var parametrosCurso = new ParametrosCurso();
         parametrosCurso.setDisciplinas(modelo.getDisciplinas());
         parametrosCurso.setTurnos(modelo.getTurnos());
+        parametrosCurso.setMaxAlunosGrupo(modelo.getMaxAlunosGrupo());
 
         return parametrosCurso;
     }

@@ -8,6 +8,8 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
 
+import java.util.List;
+
 public class Curso {
     private Long id;
     private String nome;
@@ -86,5 +88,17 @@ public class Curso {
             );
         }
         this.coordenador = coordenador;
+    }
+
+    public List<Turno> getTurnos() {
+        return getParametros().getTurnos();
+    }
+
+    public List<Disciplina> getDisciplinas() {
+        return getParametros().getDisciplinas();
+    }
+
+    public Integer getMaxAlunosGrupo() {
+        return getParametros().getMaxAlunosGrupo();
     }
 }

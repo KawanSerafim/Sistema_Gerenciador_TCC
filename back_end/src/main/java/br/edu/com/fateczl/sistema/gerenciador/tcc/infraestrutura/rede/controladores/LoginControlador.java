@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("login/api")
+@RequestMapping("/login/api")
 @CrossOrigin(origins = "*")
 public class LoginControlador {
     private final LoginCaso loginCaso;

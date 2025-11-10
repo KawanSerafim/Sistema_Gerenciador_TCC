@@ -13,12 +13,18 @@ import java.util.List;
 public class ParametrosCurso {
     private List<Turno> turnos;
     private List<Disciplina> disciplinas;
+    private Integer maxAlunosGrupo;
 
     public ParametrosCurso() {}
 
-    public ParametrosCurso(List<Turno> turnos, List<Disciplina> disciplinas) {
+    public ParametrosCurso(
+            List<Turno> turnos,
+            List<Disciplina> disciplinas,
+            Integer maxAlunosGrupo
+    ) {
         this.setTurnos(turnos);
         this.setDisciplinas(disciplinas);
+        this.setMaxAlunosGrupo(maxAlunosGrupo);
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {
@@ -57,5 +63,29 @@ public class ParametrosCurso {
             );
         }
         this.disciplinas = disciplinas;
+    }
+
+    public Integer getMaxAlunosGrupo() {
+        return maxAlunosGrupo;
+    }
+
+    public void setMaxAlunosGrupo(Integer maxAlunosGrupo) {
+        if(maxAlunosGrupo == null) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_001_CAMPO_OBRIGATORIO,
+                    "ParametrosCurso: Validação falhou. O campo obrigatório "
+                    + "'máximo de alunos por grupo' estava nulo ou vazio."
+            );
+        }
+
+        if(maxAlunosGrupo < 1) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_005_PADRAO_INVALIDO,
+                    "Parâmetros de Curso: O campo 'máximo de alunos por grupo' "
+                    + "não segue o padrão esperado. (Valor: '[" + maxAlunosGrupo
+                    + "]', Padrão: '[Valor >= 1]')"
+            );
+        }
+        this.maxAlunosGrupo = maxAlunosGrupo;
     }
 }

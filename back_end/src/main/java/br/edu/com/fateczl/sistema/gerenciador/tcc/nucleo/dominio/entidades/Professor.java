@@ -30,6 +30,18 @@ public class Professor {
         this.setCargo(cargo);
     }
 
+    public boolean podeSerOrientador() {
+        return getCargo().podeSerOrientador();
+    }
+
+    public boolean podeSerProfessorTg() {
+        return getCargo().podeSerProfessorTg();
+    }
+
+    public boolean podeSerCoordenadorCurso() {
+        return getCargo().podeSerCoordenadorCurso();
+    }
+
     public Long getId() {
         return id;
     }

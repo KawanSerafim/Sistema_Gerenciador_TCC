@@ -4,7 +4,7 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .CargoProfessor;
 
-public record ProfessorRequisicao(
+public record GerarProfessorRequisicao(
         String nome,
         String matricula,
         String email,

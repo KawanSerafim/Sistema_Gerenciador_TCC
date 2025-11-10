@@ -19,7 +19,7 @@ public class EnviarEmailControlador {
         this.enviarEmailCaso = enviarEmailCaso;
     }
 
-    @PostMapping("/enviar")
+    @PostMapping
     public ResponseEntity<String> enviar(
             @RequestBody EmailConfirmacaoRequisicao requisicao
     ){

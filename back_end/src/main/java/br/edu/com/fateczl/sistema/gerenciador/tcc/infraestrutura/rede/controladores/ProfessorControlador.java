@@ -1,8 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede
         .controladores;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
-        .requisicoes.ProfessorRequisicao;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.requisicoes.GerarProfessorRequisicao;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.ProfessorResposta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
@@ -12,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("professores/api")
+@RequestMapping("/professores/api")
 @CrossOrigin(origins = "*")
 public class ProfessorControlador {
     private final CadastrarProfessorCaso cadastrarProfessorCaso;
@@ -23,7 +22,7 @@ public class ProfessorControlador {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<ProfessorResposta> cadastrarProfessor(
-            @RequestBody ProfessorRequisicao requisicao
+            @RequestBody GerarProfessorRequisicao requisicao
     ) {
         var entrada = new CadastrarProfessorCaso.Entrada(
                 requisicao.nome(),
