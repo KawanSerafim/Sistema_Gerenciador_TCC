@@ -7,6 +7,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .ParametrosCurso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Professor;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
@@ -71,9 +72,20 @@ public class GerarCursoServico implements GerarCursoCaso {
             throw new ExcecaoDominio(
                     CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
                     "[Professor] (ID: [" + professor.getId() + "]): Ação "
-                    + "'[Ser cadastrado em curso]' falhou devido a estado "
-                    + "inválido. (EstadoAtual: '[" + professor.getCargo()
+                    + "'[Ser cadastrado num curso]' falhou devido a cargo "
+                    + "inválido. (CargoAtual: '[" + professor.getCargo()
                     + "]', Esperado: '[COORDENADOR_CURSO]')"
+            );
+        }
+
+        if(professor.getStatusContaUsuario() != StatusContaUsuario.ATIVO) {
+            throw new ExcecaoDominio(
+                    CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
+                    "[Professor] (ID: [" + professor.getId() + "]): Ação "
+                    + "'[Ser cadastrado num curso]' falhou devido a estado de "
+                    + "conta inválido. (EstadoAtual: '["
+                    + professor.getStatusContaUsuario() + "]', Esperado: "
+                    + "'[COORDENADOR_CURSO]')"
             );
         }
 
