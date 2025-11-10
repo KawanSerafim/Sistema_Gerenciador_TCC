@@ -1,8 +1,7 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede
         .controladores;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede
-        .dtos.requisicoes.ProfessorRequisicao;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.requisicoes.GerarProfessorRequisicao;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede
         .excecoes.ManipuladorGlobalExcecao;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
@@ -61,7 +60,7 @@ public class ProfessorControladorTest {
     void deveCadastrarERetornarStatusCreated() throws Exception {
         Long id = 1L;
 
-        var requisicao = new ProfessorRequisicao(
+        var requisicao = new GerarProfessorRequisicao(
                 nome,
                 matricula,
                 email,
@@ -91,7 +90,7 @@ public class ProfessorControladorTest {
     @Test
     void deveRetornarBadRequestQuandoServicoLancarExcecaoDominio()
             throws Exception {
-        var requisicao = new ProfessorRequisicao(
+        var requisicao = new GerarProfessorRequisicao(
                 nome,
                 matricula,
                 email,

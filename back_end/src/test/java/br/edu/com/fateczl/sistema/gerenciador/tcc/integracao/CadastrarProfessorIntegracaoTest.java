@@ -1,7 +1,6 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.integracao;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
-        .requisicoes.ProfessorRequisicao;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.requisicoes.GerarProfessorRequisicao;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .CargoProfessor;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
@@ -44,7 +43,7 @@ public class CadastrarProfessorIntegracaoTest {
 
     @Test
     void deveCadastrarProfessorComSucesso() throws Exception {
-        var requisicao = new ProfessorRequisicao(
+        var requisicao = new GerarProfessorRequisicao(
                 "Professor Teste",
                 "P12345",
                 "professor.teste@fatec.com.br",
@@ -73,7 +72,7 @@ public class CadastrarProfessorIntegracaoTest {
 
     @Test
     void naoDeveCadastrarProfessorComMatriculaDuplicada() throws Exception {
-        var requisicao1 = new ProfessorRequisicao(
+        var requisicao1 = new GerarProfessorRequisicao(
                 "Professor 1",
                 "P11111",
                 "email1@fatec.com.br",
@@ -86,7 +85,7 @@ public class CadastrarProfessorIntegracaoTest {
                         .content(objectMapper.writeValueAsString(requisicao1)))
                 .andExpect(status().isCreated());
 
-        var requisicaoDuplicada = new ProfessorRequisicao(
+        var requisicaoDuplicada = new GerarProfessorRequisicao(
                 "Professor 2",
                 "P11111",
                 "email2@fatec.com.br",
@@ -107,7 +106,7 @@ public class CadastrarProfessorIntegracaoTest {
 
     @Test
     void naoDeveCadastrarProfessorComEmailDuplicado() throws Exception {
-        var requisicao1 = new ProfessorRequisicao(
+        var requisicao1 = new GerarProfessorRequisicao(
                 "Professor 1",
                 "P11111",
                 "email.duplicado@fatec.com.br",
@@ -120,7 +119,7 @@ public class CadastrarProfessorIntegracaoTest {
                         .content(objectMapper.writeValueAsString(requisicao1)))
                 .andExpect(status().isCreated());
 
-        var requisicaoDuplicada = new ProfessorRequisicao(
+        var requisicaoDuplicada = new GerarProfessorRequisicao(
                 "Professor 2",
                 "P22222",
                 "email.duplicado@fatec.com.br",
