@@ -4,11 +4,15 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
         .mysql.mapeadores.CursoMapeador;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
+        .mysql.mapeadores.ProfessorMapeador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
         .mysql.modelos.CursoModelo;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
         .mysql.repositorios.spring.CursoRepositorioSpring;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Curso;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Professor;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .CursoRepositorio;
 import org.springframework.stereotype.Repository;
@@ -17,30 +21,43 @@ import java.util.Optional;
 
 @Repository
 public class CursoRepositorioImpl implements CursoRepositorio {
-    private final CursoRepositorioSpring repositorioSpring;
-    private final CursoMapeador mapeador;
+    private final CursoRepositorioSpring cursoRepositorioSpring;
+    private final CursoMapeador cursoMapeador;
+    private final ProfessorMapeador professorMapeador;
 
     public CursoRepositorioImpl(
-            CursoRepositorioSpring repositorioSpring,
-            CursoMapeador mapeador
+            CursoRepositorioSpring cursoRepositorioSpring,
+            CursoMapeador cursoMapeador,
+            ProfessorMapeador professorMapeador
     ) {
-        this.repositorioSpring = repositorioSpring;
-        this.mapeador = mapeador;
+        this.cursoRepositorioSpring = cursoRepositorioSpring;
+        this.cursoMapeador = cursoMapeador;
+        this.professorMapeador = professorMapeador;
     }
 
     @Override
     public Curso salvar(Curso curso) {
-        var cursoModelo = mapeador.paraModelo(curso);
-        repositorioSpring.save(cursoModelo);
+        var cursoModelo = cursoMapeador.paraModelo(curso);
+        cursoRepositorioSpring.save(cursoModelo);
 
-        return mapeador.paraDominio(cursoModelo);
+        return cursoMapeador.paraDominio(cursoModelo);
     }
 
     @Override
     public Optional<Curso> buscarPorNome(String nome) {
-        Optional<CursoModelo> cursoModeloOpt = repositorioSpring
+        Optional<CursoModelo> cursoModeloOpt = cursoRepositorioSpring
                 .findByNome(nome);
 
-        return cursoModeloOpt.map(this.mapeador::paraDominio);
+        return cursoModeloOpt.map(this.cursoMapeador::paraDominio);
+    }
+
+    @Override
+    public Optional<Curso> buscarPorCoordenador(Professor coordenador) {
+        var coordenadorModelo = professorMapeador.paraModelo(coordenador);
+
+        Optional<CursoModelo> cursoModeloOpt = cursoRepositorioSpring
+                .findByCoordenador(coordenadorModelo);
+
+        return cursoModeloOpt.map(this.cursoMapeador::paraDominio);
     }
 }
