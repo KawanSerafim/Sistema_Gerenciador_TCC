@@ -15,16 +15,17 @@ public interface GerarCurso {
             List<Turno> turnos,
             List<Disciplina> disciplinas,
             Integer maxAlunosGrupo,
-            Professor coordenadorCurso
+            String matriculaCoordenador
     ) {}
 
     record Saida(
-            Integer id,
+            Long id,
             String name,
             List<Turno> turnos,
             List<Disciplina> disciplinas,
             Integer maxAlunosGrupo,
-            Professor coordenadorCurso
+            String nomeCoordenador,
+            String matriculaCoordenador
     ) {}
 
     Saida executar(Entrada entrada);
