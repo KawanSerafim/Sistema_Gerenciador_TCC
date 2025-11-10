@@ -37,7 +37,7 @@ public class CursoRepositorioImpl implements CursoRepositorio {
     }
 
     @Override
-    public Optional<Curso> buscarNome(String nome) {
+    public Optional<Curso> buscarPorNome(String nome) {
         Optional<CursoModelo> cursoModeloOpt = repositorioSpring
                 .findByNome(nome);
 
