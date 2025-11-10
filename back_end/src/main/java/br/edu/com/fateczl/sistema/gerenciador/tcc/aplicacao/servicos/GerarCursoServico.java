@@ -59,13 +59,25 @@ public class GerarCursoServico implements GerarCursoCaso {
     }
 
     private Professor pegarCoordenador(String matricula) {
-        return professorRepositorio.buscarPorMatricula(matricula)
+        Professor professor = professorRepositorio.buscarPorMatricula(matricula)
                 .orElseThrow(() -> new ExcecaoDominio(
                         CodigoErro.GN_001_REGISTRO_NAO_ENCONTRADO,
                         "Professor: Não encontrado. Nenhuma entidade localizada"
                         + " com o critério: [Matrícula] = '[" + matricula
                         + "]'."
                 ));
+
+        if(!professor.podeSerCoordenadorCurso()) {
+            throw new ExcecaoDominio(
+                    CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
+                    "[Professor] (ID: [" + professor.getId() + "]): Ação "
+                    + "'[Ser cadastrado em curso]' falhou devido a estado "
+                    + "inválido. (EstadoAtual: '[" + professor.getCargo()
+                    + "]', Esperado: '[COORDENADOR_CURSO]')"
+            );
+        }
+
+        return professor;
     }
 
     private Curso pegarCurso(
