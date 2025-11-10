@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @Repository
 public class CursoRepositorioImpl implements CursoRepositorio {
-    private final CursoRepositorioSpring cursoRepositorioSpring;
+    private final CursoRepositorioSpring repositorioSpring;
     private final CursoMapeador cursoMapeador;
     private final ProfessorMapeador professorMapeador;
 
@@ -30,7 +30,7 @@ public class CursoRepositorioImpl implements CursoRepositorio {
             CursoMapeador cursoMapeador,
             ProfessorMapeador professorMapeador
     ) {
-        this.cursoRepositorioSpring = cursoRepositorioSpring;
+        this.repositorioSpring = cursoRepositorioSpring;
         this.cursoMapeador = cursoMapeador;
         this.professorMapeador = professorMapeador;
     }
@@ -38,14 +38,14 @@ public class CursoRepositorioImpl implements CursoRepositorio {
     @Override
     public Curso salvar(Curso curso) {
         var cursoModelo = cursoMapeador.paraModelo(curso);
-        cursoRepositorioSpring.save(cursoModelo);
+        repositorioSpring.save(cursoModelo);
 
         return cursoMapeador.paraDominio(cursoModelo);
     }
 
     @Override
     public Optional<Curso> buscarPorNome(String nome) {
-        Optional<CursoModelo> cursoModeloOpt = cursoRepositorioSpring
+        Optional<CursoModelo> cursoModeloOpt = repositorioSpring
                 .findByNome(nome);
 
         return cursoModeloOpt.map(this.cursoMapeador::paraDominio);
@@ -55,7 +55,7 @@ public class CursoRepositorioImpl implements CursoRepositorio {
     public Optional<Curso> buscarPorCoordenador(Professor coordenador) {
         var coordenadorModelo = professorMapeador.paraModelo(coordenador);
 
-        Optional<CursoModelo> cursoModeloOpt = cursoRepositorioSpring
+        Optional<CursoModelo> cursoModeloOpt = repositorioSpring
                 .findByCoordenador(coordenadorModelo);
 
         return cursoModeloOpt.map(this.cursoMapeador::paraDominio);
