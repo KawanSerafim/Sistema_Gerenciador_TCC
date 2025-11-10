@@ -77,6 +77,15 @@ public class ParametrosCurso {
                     + "'máximo de alunos por grupo' estava nulo ou vazio."
             );
         }
+
+        if(maxAlunosGrupo < 1) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_005_PADRAO_INVALIDO,
+                    "Parâmetros de Curso: O campo 'máximo de alunos por grupo' "
+                    + "não segue o padrão esperado. (Valor: '[" + maxAlunosGrupo
+                    + "]', Padrão: '[Valor >= 1]')"
+            );
+        }
         this.maxAlunosGrupo = maxAlunosGrupo;
     }
 }

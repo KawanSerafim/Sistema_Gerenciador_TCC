@@ -28,6 +28,9 @@ public class ParametrosCursoModelo {
     @Column(nullable = false)
     private List<Disciplina> disciplinas;
 
+    @Column(name = "max_alunos_grupo", nullable = false)
+    private Integer maxAlunosGrupo;
+
     public ParametrosCursoModelo() {}
 
     public List<Turno> getTurnos() {
@@ -44,5 +47,13 @@ public class ParametrosCursoModelo {
 
     public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
+    }
+
+    public Integer getMaxAlunosGrupo() {
+        return maxAlunosGrupo;
+    }
+
+    public void setMaxAlunosGrupo(Integer maxAlunosGrupo) {
+        this.maxAlunosGrupo = maxAlunosGrupo;
     }
 }
