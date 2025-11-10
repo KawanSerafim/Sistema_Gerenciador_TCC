@@ -1,13 +1,15 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso.GerarCursoCaso;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
+        .GerarCursoCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Curso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .ParametrosCurso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Professor;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
+        .StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
