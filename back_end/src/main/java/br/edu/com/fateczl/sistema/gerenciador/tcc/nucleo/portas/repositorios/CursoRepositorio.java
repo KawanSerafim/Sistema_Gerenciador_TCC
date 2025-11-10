@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface CursoRepositorio {
     Curso salvar(Curso curso);
 
-    Optional<Curso> buscarNome(String nome);
+    Optional<Curso> buscarPorNome(String nome);
 }
