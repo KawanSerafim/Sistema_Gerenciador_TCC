@@ -10,6 +10,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Turma;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
@@ -78,31 +79,18 @@ public class GerarTurmaServico implements GerarTurmaCaso {
                         CodigoErro.GN_001_REGISTRO_NAO_ENCONTRADO,
                         "[Curso]: Não encontrado. Nenhuma entidade "
                         + "localizada com o critério: [coordenador] = '["
-                        + coordenadorCurso + "]'."
+                        + coordenadorCurso.getNome() + "]'."
                 ));
     }
 
     private Professor pegarCoordenadorCurso(String email) {
-        Professor professor = professorRepositorio
-                .buscarPorEmail(email)
+        return professorRepositorio.buscarPorEmail(email)
                 .orElseThrow(() -> new ExcecaoDominio(
                         CodigoErro.GN_001_REGISTRO_NAO_ENCONTRADO,
                         "[Professor]: Não encontrado. Nenhuma entidade "
                         + "localizada com o critério: [email] = '[" + email
                         + "]'."
                 ));
-
-        if(!professor.podeSerCoordenadorCurso()) {
-            throw new ExcecaoDominio(
-                    CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
-                    "[Professor] (ID: [" + professor.getId() + "]): Ação "
-                    + "'[Gerar turma]' falhou devido a cargo inválido. "
-                    + "(CargoAtual: '[" + professor.getCargo() + "]', Esperado:"
-                    + " '[COORDENADOR_CURSO]')"
-            );
-        }
-
-        return professor;
     }
 
     private Professor pegarProfessorTg(String matricula) {
@@ -122,6 +110,17 @@ public class GerarTurmaServico implements GerarTurmaCaso {
                     + "'[Ser cadastrado numa turma]' falhou devido a cargo "
                     + "inválido. (CargoAtual: '[" + professor.getCargo() + "]',"
                     + "Esperado: '[PROFESSOR_TG]')"
+            );
+        }
+
+        if(professor.getStatusContaUsuario() != StatusContaUsuario.ATIVO) {
+            throw new ExcecaoDominio(
+                    CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
+                    "[Professor] (ID: [" + professor.getId() + "]): Ação "
+                    + "'[Ser cadastrado numa turma]' falhou devido a estado de "
+                    + "conta inválido. (EstadoAtual: '["
+                    + professor.getStatusContaUsuario() + "]', Esperado: "
+                    + "'[ATIVO]')"
             );
         }
 
