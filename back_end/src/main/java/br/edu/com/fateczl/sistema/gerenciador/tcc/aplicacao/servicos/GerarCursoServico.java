@@ -87,7 +87,7 @@ public class GerarCursoServico implements GerarCursoCaso {
                     + "'[Ser cadastrado num curso]' falhou devido a estado de "
                     + "conta inválido. (EstadoAtual: '["
                     + professor.getStatusContaUsuario() + "]', Esperado: "
-                    + "'[COORDENADOR_CURSO]')"
+                    + "'[ATIVO]')"
             );
         }
 
