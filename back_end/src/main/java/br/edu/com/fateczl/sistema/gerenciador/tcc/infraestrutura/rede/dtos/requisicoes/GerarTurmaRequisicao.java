@@ -7,7 +7,6 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Turno;
 
 public record GerarTurmaRequisicao(
-        String emailCoordenador,
         Disciplina disciplina,
         Turno turno,
         String matriculaProfessorTg,
