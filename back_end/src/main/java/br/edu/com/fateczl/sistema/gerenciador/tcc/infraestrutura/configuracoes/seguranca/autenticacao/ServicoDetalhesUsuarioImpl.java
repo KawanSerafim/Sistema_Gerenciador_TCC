@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -57,9 +58,30 @@ public class ServicoDetalhesUsuarioImpl implements UserDetailsService {
 
         if(professorOpt.isPresent()) {
             var professor = professorOpt.get();
-            List<GrantedAuthority> authorities = Collections.singletonList(
-                    new SimpleGrantedAuthority("ROLE_PROFESSOR")
-            );
+            List<GrantedAuthority> authorities = new ArrayList<>();
+
+            authorities.add(new SimpleGrantedAuthority("ROLE_PROFESSOR"));
+
+            if(professor.podeSerCoordenadorCurso()) {
+                authorities.add(new SimpleGrantedAuthority(
+                        "ROLE_COORDENADOR_CURSO"
+                ));
+                authorities.add(new SimpleGrantedAuthority(
+                        "ROLE_PROFESSOR_TG"
+                ));
+            }
+
+            if(professor.podeSerProfessorTg()) {
+                authorities.add(new SimpleGrantedAuthority(
+                        "ROLE_PROFESSOR_TG"
+                ));
+            }
+
+            if(professor.podeSerOrientador()) {
+                authorities.add(new SimpleGrantedAuthority(
+                        "ROLE_ORIENTADOR"
+                ));
+            }
 
             return new DetalhesUsuarioImpl(
                     professor.getEmailContaUsuario(),

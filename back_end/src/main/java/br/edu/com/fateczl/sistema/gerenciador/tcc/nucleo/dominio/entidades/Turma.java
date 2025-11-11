@@ -8,6 +8,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
 
+import java.time.LocalDate;
 import java.time.Year;
 
 public class Turma {
@@ -168,6 +169,14 @@ public class Turma {
     }
 
     public void setSemestre(Integer semestre) {
+        if(getAno() == null) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_001_CAMPO_OBRIGATORIO,
+                    "Turma (ID: " + getId() + "): Validação falhou. Para "
+                    + "inserir o semestre, é necessário já ter inserido o ano."
+            );
+        }
+
         if(semestre == null) {
             throw new ExcecaoDominio(
                     CodigoErro.VD_001_CAMPO_OBRIGATORIO,
@@ -184,6 +193,24 @@ public class Turma {
                     + " 1 ou 2)"
             );
         }
+
+        LocalDate agora = LocalDate.now();
+        int anoAtual = agora.getYear();
+        int mesAtual = agora.getMonthValue();
+        int semestreAtual = (mesAtual <= 6) ? 1 : 2;
+
+        if(this.getAno() == anoAtual && semestre < semestreAtual) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_004_DATA_INVALIDA,
+                    "Turma (ID: " + getId() + "): Validação de data falhou p/ "
+                    + "o campo semestre. (Valor: " + semestre + ", Condição: "
+                    + "Não pode ser um semestre passado.)"
+            );
+        }
         this.semestre = semestre;
+    }
+
+    public Long getIdProfessorTg() {
+        return professorTg.getId();
     }
 }
