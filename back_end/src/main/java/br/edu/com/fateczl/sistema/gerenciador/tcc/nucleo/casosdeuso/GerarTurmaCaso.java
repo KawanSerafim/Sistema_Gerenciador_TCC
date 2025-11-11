@@ -16,10 +16,10 @@ public interface GerarTurmaCaso {
 
     record Saida(
             Long idTurma,
-            Long idCurso,
+            String nomeCurso,
             Disciplina disciplina,
             Turno turno,
-            Long idProfessorTg,
+            String nomeProfessorTg,
             Integer ano,
             Integer semestre
     ) {}

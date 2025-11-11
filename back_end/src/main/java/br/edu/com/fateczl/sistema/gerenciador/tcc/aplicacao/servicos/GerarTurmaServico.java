@@ -64,10 +64,10 @@ public class GerarTurmaServico implements GerarTurmaCaso {
 
         return new Saida(
                 turmaSalva.getId(),
-                curso.getId(),
+                curso.getNome(),
                 turmaSalva.getDisciplina(),
                 turmaSalva.getTurno(),
-                turmaSalva.getIdProfessorTg(),
+                professorTg.getNome(),
                 turmaSalva.getAno(),
                 turmaSalva.getSemestre()
         );

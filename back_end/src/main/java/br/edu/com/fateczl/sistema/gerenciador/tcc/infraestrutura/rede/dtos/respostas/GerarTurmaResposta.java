@@ -8,10 +8,10 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
 
 public record GerarTurmaResposta(
         Long idTurma,
-        Long idCurso,
+        String nomeCurso,
         Disciplina disciplina,
         Turno turno,
-        Long idProfessorTg,
+        String nomeProfessorTg,
         Integer ano,
         Integer semestre
 ) {}

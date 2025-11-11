@@ -42,10 +42,10 @@ public class TurmaControlador {
 
         var corpoResposta = new GerarTurmaResposta(
                 resultado.idTurma(),
-                resultado.idCurso(),
+                resultado.nomeCurso(),
                 resultado.disciplina(),
                 resultado.turno(),
-                resultado.idProfessorTg(),
+                resultado.nomeProfessorTg(),
                 resultado.ano(),
                 resultado.semestre()
         );
