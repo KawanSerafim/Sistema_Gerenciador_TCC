@@ -25,7 +25,7 @@ public class TurmaModelo {
     @Column(nullable = false)
     private Turno turno;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_professor_tg", nullable = false)
     private ProfessorModelo professorTg;
 
