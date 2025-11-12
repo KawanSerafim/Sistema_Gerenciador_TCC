@@ -6,8 +6,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
-        .LeitorArquivoDadosAlunos;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.LeitorArquivoDadosAlunosPorta;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,7 @@ import java.util.List;
 
 @Component
 public class LeitorArquivoDadosAlunosAdaptador
-        implements LeitorArquivoDadosAlunos {
+        implements LeitorArquivoDadosAlunosPorta {
     @Override
     public DadosArquivo ler(InputStream arquivoBruto) {
         try(Workbook workbook = new XSSFWorkbook(arquivoBruto)) {
