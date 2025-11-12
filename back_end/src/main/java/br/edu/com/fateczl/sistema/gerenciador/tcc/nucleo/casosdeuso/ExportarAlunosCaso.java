@@ -7,20 +7,16 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
-        .LeitorArquivoDadosAlunos;
 
+import java.io.InputStream;
 import java.util.List;
 
 public interface ExportarAlunosCaso {
     record Entrada(
+            String emailProfessorTg,
             Long idTurma,
-            LeitorArquivoDadosAlunos.DadosArquivo dadosArquivo
-    ) {
-        public List<LeitorArquivoDadosAlunos.DadosAlunos> alunos() {
-            return this.dadosArquivo.alunos();
-        }
-    }
+            InputStream arquivoBruto
+    ) {}
 
     record Saida(
             Turma turma,
