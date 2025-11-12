@@ -213,4 +213,8 @@ public class Turma {
     public String getNomeCurso() {
         return this.getCurso().getNome();
     }
+
+    public Long getIdProfessorTg() {
+        return this.getProfessorTg().getId();
+    }
 }
