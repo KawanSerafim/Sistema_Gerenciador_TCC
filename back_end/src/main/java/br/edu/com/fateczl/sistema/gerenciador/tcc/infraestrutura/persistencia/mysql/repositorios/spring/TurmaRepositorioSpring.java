@@ -14,6 +14,8 @@ import java.util.Optional;
 
 public interface TurmaRepositorioSpring
         extends JpaRepository<TurmaModelo, Integer> {
+    Optional<TurmaModelo> findById(Long id);
+
     Optional<TurmaModelo> findByCursoAndDisciplinaAndTurnoAndAnoAndSemestre(
             CursoModelo curso,
             Disciplina disciplina,
