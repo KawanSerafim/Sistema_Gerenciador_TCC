@@ -2,7 +2,8 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .ExportarAlunosCaso;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Aluno;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Aluno;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Turma;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
