@@ -47,6 +47,13 @@ public class TurmaRepositorioImpl implements TurmaRepositorio {
     }
 
     @Override
+    public Optional<Turma> buscarPorId(Long id) {
+        Optional<TurmaModelo> turmaModeloOpt = repositorioSpring.findById(id);
+
+        return turmaModeloOpt.map(turmaMapeador::paraDominio);
+    }
+
+    @Override
     public Optional<Turma> buscarPorCursoEDisciplinaETurnoEAnoESemestre(
             Curso curso,
             Disciplina disciplina,
