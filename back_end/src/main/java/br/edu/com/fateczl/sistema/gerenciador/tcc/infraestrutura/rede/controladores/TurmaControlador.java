@@ -7,6 +7,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.ExportarAlunosResposta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.GerarTurmaResposta;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.mapeadores.AlunoRespostaMapeador;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .ExportarAlunosCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
@@ -26,13 +27,16 @@ import java.io.IOException;
 public class TurmaControlador {
     private final GerarTurmaCaso gerarTurmaCaso;
     private final ExportarAlunosCaso exportarAlunosCaso;
+    private final AlunoRespostaMapeador alunoRespostaMapeador;
 
     public TurmaControlador(
             GerarTurmaCaso gerarTurmaCaso,
-            ExportarAlunosCaso exportarAlunosCaso
+            ExportarAlunosCaso exportarAlunosCaso,
+            AlunoRespostaMapeador alunoRespostaMapeador
     ) {
         this.gerarTurmaCaso = gerarTurmaCaso;
         this.exportarAlunosCaso = exportarAlunosCaso;
+        this.alunoRespostaMapeador = alunoRespostaMapeador;
     }
 
     @PostMapping("/gerar")
@@ -61,7 +65,6 @@ public class TurmaControlador {
                 resultado.ano(),
                 resultado.semestre()
         );
-
         return ResponseEntity.status(HttpStatus.CREATED).body(corpoResposta);
     }
 
@@ -80,6 +83,10 @@ public class TurmaControlador {
 
         var resultado = exportarAlunosCaso.executar(entrada);
 
+        var alunosResposta = alunoRespostaMapeador.paraListaResposta(
+                resultado.alunos()
+        );
+
         var corpoResposta = new ExportarAlunosResposta(
                 resultado.idTurma(),
                 resultado.nomeCurso(),
@@ -87,9 +94,8 @@ public class TurmaControlador {
                 resultado.disciplina(),
                 resultado.ano(),
                 resultado.semestre(),
-                resultado.alunos()
+                alunosResposta
         );
-
         return ResponseEntity.status(HttpStatus.CREATED).body(corpoResposta);
     }
 }
