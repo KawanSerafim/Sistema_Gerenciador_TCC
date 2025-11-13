@@ -30,6 +30,7 @@ public class Aluno {
     ) {
         this.setNome(nome);
         this.setMatricula(matricula);
+        this.setStatus(StatusAluno.PRE_CADASTRO);
         matricularEmTurma(turmaInicial);
     }
 
