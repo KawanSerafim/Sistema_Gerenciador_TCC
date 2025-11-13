@@ -1,15 +1,23 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.eventos.UsuarioPedeEmailConfirmacaoEvento;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.eventos
+        .UsuarioPedeEmailConfirmacaoEvento;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .FinalizarCadastroAlunoCaso;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Administrador;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Aluno;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.ContaUsuario;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades.Professor;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusAluno;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes.CodigoErro;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes.ExcecaoDominio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Administrador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Aluno;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .ContaUsuario;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .Professor;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
+        .StatusAluno;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
+        .CodigoErro;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
+        .ExcecaoDominio;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas
         .CriptografoSenhasPorta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
