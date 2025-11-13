@@ -19,33 +19,14 @@ public interface ExportarAlunosCaso {
     ) {}
 
     record Saida(
-            Turma turma,
+            Long idTurma,
+            String nomeCurso,
+            Turno turno,
+            Disciplina disciplina,
+            Integer ano,
+            Integer semestre,
             List<Aluno> alunos
-    ) {
-        public Long idTurma() {
-            return this.turma.getId();
-        }
-
-        public String nomeCurso() {
-            return this.turma.getNomeCurso();
-        }
-
-        public Turno turno() {
-            return this.turma.getTurno();
-        }
-
-        public Disciplina disciplina() {
-            return this.turma.getDisciplina();
-        }
-
-        public Integer ano() {
-            return this.turma.getAno();
-        }
-
-        public Integer semestre() {
-            return this.turma.getSemestre();
-        }
-    }
+    ) {}
 
     Saida executar(Entrada entrada);
 }
