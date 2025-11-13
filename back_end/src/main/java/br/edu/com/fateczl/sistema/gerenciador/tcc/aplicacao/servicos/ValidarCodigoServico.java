@@ -110,7 +110,7 @@ public class ValidarCodigoServico implements ValidarCodigoCaso {
         var contaUsuario = aluno.getContaUsuario();
         validarStatusContaUsuario(contaUsuario.getStatus());
         contaUsuario.setStatus(StatusContaUsuario.EMAIL_CONFIRMADO);
-        aluno.setContaUsuario(contaUsuario);
+        aluno.finalizarCadastro(contaUsuario);
 
         alunoRepositorio.salvar(aluno);
     }

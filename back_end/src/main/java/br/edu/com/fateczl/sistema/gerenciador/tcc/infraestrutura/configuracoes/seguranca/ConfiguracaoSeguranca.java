@@ -39,7 +39,7 @@ public class ConfiguracaoSeguranca {
                 .authorizeHttpRequests(autorizacao -> autorizacao
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "login/api"
+                                "/login/api"
                         ).permitAll()
 
                         .requestMatchers(
@@ -49,12 +49,17 @@ public class ConfiguracaoSeguranca {
 
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "enviar-email/api/enviar"
+                                "/alunos/api/finalizar-cadastro"
                         ).permitAll()
 
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "validar-codigo/api"
+                                "/enviar-email/api/enviar"
+                        ).permitAll()
+
+                        .requestMatchers(
+                                HttpMethod.POST,
+                                "/validar-codigo/api"
                         ).permitAll()
 
                         .anyRequest().authenticated()
