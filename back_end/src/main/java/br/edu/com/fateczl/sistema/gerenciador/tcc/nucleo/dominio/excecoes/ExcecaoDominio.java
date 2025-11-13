@@ -155,5 +155,14 @@ public class ExcecaoDominio extends RuntimeException {
  * CodigoErro: AU_003_CONTA_INVALIDA
  * Mensagem (Log): Autenticação: Falha na tentativa de login para o usuário
  * [email_tentado]. (Motivo: Conta de estádo inválido, IP: [IP_Address])
+ *
+ * -----------------------------------------------------------------------------
+ *
+ * 15. Arquivo inválido
+ * -------------------
+ * CodigoErro: VD_008_ARQUIVO_INVALIDO
+ * Mensagem (Log): Leitor de Arquivo: Falha ao processar o arquivo
+ * ['Tipo_Arquivo']: [Mensagem_Exceção]
+ *
  * =============================================================================
  */

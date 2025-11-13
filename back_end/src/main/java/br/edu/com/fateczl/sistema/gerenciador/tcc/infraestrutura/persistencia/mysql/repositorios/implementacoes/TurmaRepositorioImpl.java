@@ -41,9 +41,16 @@ public class TurmaRepositorioImpl implements TurmaRepositorio {
     @Override
     public Turma salvar(Turma turma) {
         var turmaModelo = turmaMapeador.paraModelo(turma);
-        repositorioSpring.save(turmaModelo);
+        var turmaSalva = repositorioSpring.save(turmaModelo);
 
-        return turmaMapeador.paraDominio(turmaModelo);
+        return turmaMapeador.paraDominio(turmaSalva);
+    }
+
+    @Override
+    public Optional<Turma> buscarPorId(Long id) {
+        Optional<TurmaModelo> turmaModeloOpt = repositorioSpring.findById(id);
+
+        return turmaModeloOpt.map(turmaMapeador::paraDominio);
     }
 
     @Override

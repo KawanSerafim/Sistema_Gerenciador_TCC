@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface TurmaRepositorio {
     Turma salvar(Turma turma);
 
+    Optional<Turma> buscarPorId(Long id);
+
     Optional<Turma> buscarPorCursoEDisciplinaETurnoEAnoESemestre(
             Curso curso,
             Disciplina disciplina,

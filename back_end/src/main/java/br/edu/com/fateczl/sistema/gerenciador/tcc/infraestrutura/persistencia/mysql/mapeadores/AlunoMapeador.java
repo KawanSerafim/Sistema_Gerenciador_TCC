@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class AlunoMapeador {
-    private ContaUsuarioMapeador contaUsuarioMapeador;
-    private TurmaMapeador turmaMapeador;
+    private final ContaUsuarioMapeador contaUsuarioMapeador;
+    private final TurmaMapeador turmaMapeador;
 
     public AlunoMapeador(
             ContaUsuarioMapeador contaUsuarioMapeador,
@@ -29,9 +29,13 @@ public class AlunoMapeador {
         alunoModelo.setId(dominio.getId());
         alunoModelo.setNome(dominio.getNome());
         alunoModelo.setMatricula(dominio.getMatricula());
-        alunoModelo.setContaUsuario(
-                contaUsuarioMapeador.paraModelo(dominio.getContaUsuario())
-        );
+
+        if(dominio.getContaUsuario() != null){
+            alunoModelo.setContaUsuario(
+                    contaUsuarioMapeador.paraModelo(dominio.getContaUsuario())
+            );
+        }
+
         alunoModelo.setStatus(dominio.getStatus());
 
         if(dominio.getTurmas() != null) {
@@ -41,7 +45,6 @@ public class AlunoMapeador {
                             .collect(Collectors.toList())
             );
         }
-
         return alunoModelo;
     }
 
@@ -52,9 +55,15 @@ public class AlunoMapeador {
         aluno.setId(modelo.getId());
         aluno.setNome(modelo.getNome());
         aluno.setMatricula(modelo.getMatricula());
-        aluno.setContaUsuario(
-                contaUsuarioMapeador.paraDominio(modelo.getContaUsuario())
-        );
+
+        if(modelo.getContaUsuario() != null
+                && modelo.getContaUsuario().getEmail() != null
+        ) {
+            aluno.setContaUsuario(
+                    contaUsuarioMapeador.paraDominio(modelo.getContaUsuario())
+            );
+        }
+
         aluno.setStatus(modelo.getStatus());
 
         if(modelo.getTurmas() != null) {
@@ -64,7 +73,6 @@ public class AlunoMapeador {
                             .collect(Collectors.toList())
             );
         }
-
         return aluno;
     }
 }

@@ -210,7 +210,11 @@ public class Turma {
         this.semestre = semestre;
     }
 
+    public String getNomeCurso() {
+        return this.getCurso().getNome();
+    }
+
     public Long getIdProfessorTg() {
-        return professorTg.getId();
+        return this.getProfessorTg().getId();
     }
 }
