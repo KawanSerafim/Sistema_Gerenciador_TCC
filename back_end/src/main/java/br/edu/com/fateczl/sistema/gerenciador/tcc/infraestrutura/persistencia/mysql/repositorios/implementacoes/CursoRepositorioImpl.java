@@ -38,9 +38,9 @@ public class CursoRepositorioImpl implements CursoRepositorio {
     @Override
     public Curso salvar(Curso curso) {
         var cursoModelo = cursoMapeador.paraModelo(curso);
-        repositorioSpring.save(cursoModelo);
+        var cursoSalvo = repositorioSpring.save(cursoModelo);
 
-        return cursoMapeador.paraDominio(cursoModelo);
+        return cursoMapeador.paraDominio(cursoSalvo);
     }
 
     @Override

@@ -31,9 +31,9 @@ public class AlunoRepositorioImpl implements AlunoRepositorio {
     @Override
     public Aluno salvar(Aluno aluno) {
         var alunoModelo = mapeador.paraModelo(aluno);
-        repositorioSpring.save(alunoModelo);
+        var alunoSalvo = repositorioSpring.save(alunoModelo);
 
-        return mapeador.paraDominio(alunoModelo);
+        return mapeador.paraDominio(alunoSalvo);
     }
 
     @Override

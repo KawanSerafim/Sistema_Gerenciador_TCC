@@ -31,9 +31,9 @@ public class AdministradorRepositorioImpl implements AdministradorRepositorio {
     @Override
     public Administrador salvar(Administrador administrador) {
         var administradorModelo = mapeador.paraModelo(administrador);
-        repositorioSpring.save(administradorModelo);
+        var administradorSalvo = repositorioSpring.save(administradorModelo);
 
-        return mapeador.paraDominio(administradorModelo);
+        return mapeador.paraDominio(administradorSalvo);
     }
 
     @Override

@@ -29,9 +29,9 @@ public class ProfessorRepositorioImpl implements ProfessorRepositorio {
     @Override
     public Professor salvar(Professor professor) {
         var professorModelo = mapeador.paraModelo(professor);
-        repositorioSpring.save(professorModelo);
+        var professorSalvo = repositorioSpring.save(professorModelo);
 
-        return mapeador.paraDominio(professorModelo);
+        return mapeador.paraDominio(professorSalvo);
     }
 
     @Override
