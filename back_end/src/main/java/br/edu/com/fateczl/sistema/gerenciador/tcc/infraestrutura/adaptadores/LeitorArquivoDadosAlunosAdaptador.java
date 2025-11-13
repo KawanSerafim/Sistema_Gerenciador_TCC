@@ -65,7 +65,7 @@ public class LeitorArquivoDadosAlunosAdaptador
         if(celula.getCellType() == CellType.NUMERIC) {
             return new DataFormatter().formatCellValue(celula);
         }
-        return celula.getStringCellValue();
+        return celula.getStringCellValue().trim();
     }
 
     private Turno pegarTurno(Cell celulaTurno) {
