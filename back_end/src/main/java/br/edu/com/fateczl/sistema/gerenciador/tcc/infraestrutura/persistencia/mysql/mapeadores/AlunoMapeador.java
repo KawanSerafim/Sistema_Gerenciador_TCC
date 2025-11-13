@@ -57,7 +57,9 @@ public class AlunoMapeador {
         aluno.setNome(modelo.getNome());
         aluno.setMatricula(modelo.getMatricula());
 
-        if(modelo.getContaUsuario() != null) {
+        if(modelo.getContaUsuario() != null
+                && modelo.getContaUsuario().getEmail() != null
+        ) {
             aluno.setContaUsuario(
                     contaUsuarioMapeador.paraDominio(modelo.getContaUsuario())
             );
