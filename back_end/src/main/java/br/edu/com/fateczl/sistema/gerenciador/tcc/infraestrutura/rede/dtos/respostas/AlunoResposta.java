@@ -1,4 +1,12 @@
-package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos.respostas;
+package br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
+        .respostas;
 
-public record AlunoResposta() {
-}
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
+        .StatusAluno;
+
+public record AlunoResposta(
+        Long id,
+        String nome,
+        String matricula,
+        StatusAluno statusAluno
+) {}
