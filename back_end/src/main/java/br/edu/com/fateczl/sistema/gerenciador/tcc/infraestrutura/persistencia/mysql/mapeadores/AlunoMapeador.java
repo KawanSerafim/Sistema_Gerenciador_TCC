@@ -29,9 +29,14 @@ public class AlunoMapeador {
         alunoModelo.setId(dominio.getId());
         alunoModelo.setNome(dominio.getNome());
         alunoModelo.setMatricula(dominio.getMatricula());
+
+        if(dominio.getContaUsuario() != null){
+            contaUsuarioMapeador.paraModelo(dominio.getContaUsuario());
+        }
         alunoModelo.setContaUsuario(
                 contaUsuarioMapeador.paraModelo(dominio.getContaUsuario())
         );
+
         alunoModelo.setStatus(dominio.getStatus());
 
         if(dominio.getTurmas() != null) {
@@ -52,11 +57,12 @@ public class AlunoMapeador {
         aluno.setNome(modelo.getNome());
         aluno.setMatricula(modelo.getMatricula());
 
-        if(aluno.getContaUsuario() != null) {
+        if(modelo.getContaUsuario() != null) {
             aluno.setContaUsuario(
                     contaUsuarioMapeador.paraDominio(modelo.getContaUsuario())
             );
         }
+
         aluno.setStatus(modelo.getStatus());
 
         if(modelo.getTurmas() != null) {
