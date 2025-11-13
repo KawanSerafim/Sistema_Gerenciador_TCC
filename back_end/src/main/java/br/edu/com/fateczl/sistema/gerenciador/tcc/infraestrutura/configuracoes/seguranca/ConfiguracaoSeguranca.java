@@ -49,7 +49,7 @@ public class ConfiguracaoSeguranca {
 
                         .requestMatchers(
                                 HttpMethod.POST,
-                                "/aluno/api/finalizar-cadastro"
+                                "/alunos/api/finalizar-cadastro"
                         ).permitAll()
 
                         .requestMatchers(
