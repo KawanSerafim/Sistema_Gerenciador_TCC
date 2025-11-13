@@ -143,8 +143,8 @@ public class ExportarAlunosServico implements ExportarAlunosCaso {
                 var alunoJaCadastrado = alunosOpt.get();
                 alunoJaCadastrado.matricularEmTurma(turma);
 
-                alunoRepositorio.salvar(alunoJaCadastrado);
-                alunosAdicionados.add(alunoJaCadastrado);
+                var alunoSalvo = alunoRepositorio.salvar(alunoJaCadastrado);
+                alunosAdicionados.add(alunoSalvo);
             } else {
                 var novoAluno = new Aluno(
                         dadosAlunos.name(),
@@ -152,8 +152,8 @@ public class ExportarAlunosServico implements ExportarAlunosCaso {
                         turma
                 );
 
-                alunoRepositorio.salvar(novoAluno);
-                alunosAdicionados.add(novoAluno);
+                var alunoSalvo = alunoRepositorio.salvar(novoAluno);
+                alunosAdicionados.add(alunoSalvo);
             }
         }
         return alunosAdicionados;
