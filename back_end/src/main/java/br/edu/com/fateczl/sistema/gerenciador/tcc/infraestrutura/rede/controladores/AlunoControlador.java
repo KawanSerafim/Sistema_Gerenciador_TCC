@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/aluno/api")
+@RequestMapping("/alunos/api")
 @CrossOrigin(origins = "*")
 public class AlunoControlador {
     private final FinalizarCadastroAlunoCaso finalizarCadastroAlunoCaso;
