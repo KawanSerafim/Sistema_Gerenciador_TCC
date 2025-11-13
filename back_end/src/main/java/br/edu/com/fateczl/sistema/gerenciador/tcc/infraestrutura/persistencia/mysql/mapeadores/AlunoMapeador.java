@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class AlunoMapeador {
-    private ContaUsuarioMapeador contaUsuarioMapeador;
-    private TurmaMapeador turmaMapeador;
+    private final ContaUsuarioMapeador contaUsuarioMapeador;
+    private final TurmaMapeador turmaMapeador;
 
     public AlunoMapeador(
             ContaUsuarioMapeador contaUsuarioMapeador,
@@ -41,7 +41,6 @@ public class AlunoMapeador {
                             .collect(Collectors.toList())
             );
         }
-
         return alunoModelo;
     }
 
@@ -52,9 +51,12 @@ public class AlunoMapeador {
         aluno.setId(modelo.getId());
         aluno.setNome(modelo.getNome());
         aluno.setMatricula(modelo.getMatricula());
-        aluno.setContaUsuario(
-                contaUsuarioMapeador.paraDominio(modelo.getContaUsuario())
-        );
+
+        if(aluno.getContaUsuario() != null) {
+            aluno.setContaUsuario(
+                    contaUsuarioMapeador.paraDominio(modelo.getContaUsuario())
+            );
+        }
         aluno.setStatus(modelo.getStatus());
 
         if(modelo.getTurmas() != null) {
@@ -64,7 +66,6 @@ public class AlunoMapeador {
                             .collect(Collectors.toList())
             );
         }
-
         return aluno;
     }
 }
