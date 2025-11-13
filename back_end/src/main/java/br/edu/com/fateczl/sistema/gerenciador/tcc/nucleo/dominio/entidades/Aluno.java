@@ -158,14 +158,14 @@ public class Aluno {
     }
 
     public String getEmailContaUsuario() {
-        return contaUsuario.getEmail();
+        return (contaUsuario != null) ? contaUsuario.getEmail() : null;
     }
 
     public String getSenhaContaUsuario() {
-        return contaUsuario.getSenha();
+        return (contaUsuario != null) ? contaUsuario.getSenha() : null;
     }
 
     public StatusContaUsuario getStatusContaUsuario() {
-        return contaUsuario.getStatus();
+        return (contaUsuario != null) ? contaUsuario.getStatus() : null;
     }
 }
