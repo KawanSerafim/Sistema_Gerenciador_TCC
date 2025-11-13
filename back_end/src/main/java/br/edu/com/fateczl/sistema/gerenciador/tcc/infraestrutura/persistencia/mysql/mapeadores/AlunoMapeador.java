@@ -31,11 +31,10 @@ public class AlunoMapeador {
         alunoModelo.setMatricula(dominio.getMatricula());
 
         if(dominio.getContaUsuario() != null){
-            contaUsuarioMapeador.paraModelo(dominio.getContaUsuario());
+            alunoModelo.setContaUsuario(
+                    contaUsuarioMapeador.paraModelo(dominio.getContaUsuario())
+            );
         }
-        alunoModelo.setContaUsuario(
-                contaUsuarioMapeador.paraModelo(dominio.getContaUsuario())
-        );
 
         alunoModelo.setStatus(dominio.getStatus());
 
