@@ -56,7 +56,15 @@ public class ExportarAlunosServico implements ExportarAlunosCaso {
 
         List<Aluno> alunosAdicionados = adicionarAlunos(dadosArquivo, turma);
 
-        return new Saida(turma, alunosAdicionados);
+        return new Saida(
+                turma.getId(),
+                turma.getNomeCurso(),
+                turma.getTurno(),
+                turma.getDisciplina(),
+                turma.getAno(),
+                turma.getSemestre(),
+                alunosAdicionados
+        );
     }
 
     private Turma pegarTurma(Long id) {
