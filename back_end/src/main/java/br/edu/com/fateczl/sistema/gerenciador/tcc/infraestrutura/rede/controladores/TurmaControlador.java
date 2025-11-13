@@ -66,7 +66,7 @@ public class TurmaControlador {
     }
 
     @PostMapping("/{idTurma}/exportar-alunos")
-    @PreAuthorize("hasRole('PROFESSOR_TG')")
+    @PreAuthorize("hasRole('ROLE_PROFESSOR_TG')")
     public ResponseEntity<ExportarAlunosResposta> exportarAlunos(
             @PathVariable Long idTurma,
             @RequestParam("arquivo") MultipartFile arquivo,
