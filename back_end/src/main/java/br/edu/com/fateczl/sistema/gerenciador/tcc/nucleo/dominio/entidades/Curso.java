@@ -29,11 +29,11 @@ public class Curso {
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {
-        return getParametros().validarDisciplina(disciplina);
+        return this.getParametros().validarDisciplina(disciplina);
     }
 
     public boolean validarTurno(Turno turno) {
-        return getParametros().validarTurno(turno);
+        return this.getParametros().validarTurno(turno);
     }
 
     public Long getId() {
@@ -91,14 +91,18 @@ public class Curso {
     }
 
     public List<Turno> getTurnos() {
-        return getParametros().getTurnos();
+        return this.getParametros().getTurnos();
     }
 
     public List<Disciplina> getDisciplinas() {
-        return getParametros().getDisciplinas();
+        return this.getParametros().getDisciplinas();
     }
 
-    public Integer getMaxAlunosGrupo() {
-        return getParametros().getMaxAlunosGrupo();
+    public List<AjusteTipoTcc> getAjustesTcc() {
+        return this.getParametros().getAjustesTipoTcc();
+    }
+
+    public Long getIdCoordenador() {
+        return coordenador.getId();
     }
 }

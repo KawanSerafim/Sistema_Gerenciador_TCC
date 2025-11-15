@@ -11,6 +11,6 @@ public record GerarCursoRequisicao(
         String nome,
         List<Turno> turnos,
         List<Disciplina> disciplinas,
-        Integer maxAlunosGrupo,
+        List<AjusteTccRequisicao> ajustes,
         String matriculaCoordenador
 ) {}

@@ -6,6 +6,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Embeddable
@@ -28,8 +29,12 @@ public class ParametrosCursoModelo {
     @Column(nullable = false)
     private List<Disciplina> disciplinas;
 
-    @Column(name = "max_alunos_grupo", nullable = false)
-    private Integer maxAlunosGrupo;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "curso_ajustes_tcc",
+            joinColumns = @JoinColumn(name = "id_curso")
+    )
+    private List<AjusteTipoTccModelo> ajustesTipoTcc = new ArrayList<>();
 
     public ParametrosCursoModelo() {}
 
@@ -49,11 +54,11 @@ public class ParametrosCursoModelo {
         this.disciplinas = disciplinas;
     }
 
-    public Integer getMaxAlunosGrupo() {
-        return maxAlunosGrupo;
+    public List<AjusteTipoTccModelo> getAjustesTipoTcc() {
+        return ajustesTipoTcc;
     }
 
-    public void setMaxAlunosGrupo(Integer maxAlunosGrupo) {
-        this.maxAlunosGrupo = maxAlunosGrupo;
+    public void setAjustesTipoTcc(List<AjusteTipoTccModelo> ajustesTipoTcc) {
+        this.ajustesTipoTcc = ajustesTipoTcc;
     }
 }

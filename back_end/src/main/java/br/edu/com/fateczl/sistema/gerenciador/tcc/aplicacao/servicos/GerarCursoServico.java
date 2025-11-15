@@ -3,6 +3,8 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.aplicacao.servicos;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .GerarCursoCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
+        .AjusteTipoTcc;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Curso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .ParametrosCurso;
@@ -21,7 +23,9 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GerarCursoServico implements GerarCursoCaso {
@@ -40,11 +44,12 @@ public class GerarCursoServico implements GerarCursoCaso {
     @Transactional
     public Saida executar(Entrada entrada) {
         var coordenador = pegarCoordenador(entrada.matriculaCoordenador());
+        var ajustes = pegarAjustes(entrada.ajustesTcc());
 
         var parametros = new ParametrosCurso(
                 entrada.turnos(),
                 entrada.disciplinas(),
-                entrada.maxAlunosGrupo()
+                ajustes
         );
 
         var curso = pegarCurso(entrada, parametros, coordenador);
@@ -55,7 +60,7 @@ public class GerarCursoServico implements GerarCursoCaso {
                 cursoSalvo.getNome(),
                 cursoSalvo.getTurnos(),
                 cursoSalvo.getDisciplinas(),
-                cursoSalvo.getMaxAlunosGrupo(),
+                cursoSalvo.getAjustesTcc(),
                 coordenador.getNome(),
                 coordenador.getMatricula()
         );
@@ -65,9 +70,9 @@ public class GerarCursoServico implements GerarCursoCaso {
         Professor professor = professorRepositorio.buscarPorMatricula(matricula)
                 .orElseThrow(() -> new ExcecaoDominio(
                         CodigoErro.GN_001_REGISTRO_NAO_ENCONTRADO,
-                        "Professor: Não encontrado. Nenhuma entidade localizada"
-                        + " com o critério: [Matrícula] = '[" + matricula
-                        + "]'."
+                        "[Professor]: Não encontrado. Nenhuma entidade "
+                        + "localizada com o critério: [Matrícula] = '["
+                        + matricula + "]'."
                 ));
 
         if(!professor.podeSerCoordenadorCurso()) {
@@ -94,6 +99,17 @@ public class GerarCursoServico implements GerarCursoCaso {
         return professor;
     }
 
+    private List<AjusteTipoTcc> pegarAjustes(
+            List<AjusteTccEntrada> ajustesEntrada
+    ) {
+        return ajustesEntrada.stream()
+                .map(ajusteDto -> new AjusteTipoTcc(
+                        ajusteDto.tipoTcc(),
+                        ajusteDto.maxAlunosGrupo()
+                ))
+                .collect(Collectors.toList());
+    }
+
     private Curso pegarCurso(
             Entrada entrada,
             ParametrosCurso parametros,
@@ -105,7 +121,7 @@ public class GerarCursoServico implements GerarCursoCaso {
         if(cursoOpt.isPresent()) {
             throw new ExcecaoDominio(
                     CodigoErro.RN_002_REGISTRO_DUPLICADO,
-                    "Curso: Falha de unicidade. Já existe um registro com "
+                    "[Curso]: Falha de unicidade. Já existe um registro com "
                     + "[Nome] = '[" + entrada.nome() +"]'."
             );
         }

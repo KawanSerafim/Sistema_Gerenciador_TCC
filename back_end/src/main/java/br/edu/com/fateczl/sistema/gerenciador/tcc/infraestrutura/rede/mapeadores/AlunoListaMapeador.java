@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class AlunoRespostaMapeador {
+public class AlunoListaMapeador {
     public AlunoResposta paraResposta(Aluno aluno) {
         return new AlunoResposta(
                 aluno.getId(),

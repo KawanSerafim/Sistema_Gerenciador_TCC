@@ -8,23 +8,24 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParametrosCurso {
     private List<Turno> turnos;
     private List<Disciplina> disciplinas;
-    private Integer maxAlunosGrupo;
+    private List<AjusteTipoTcc> ajustesTipoTcc = new ArrayList<>();
 
     public ParametrosCurso() {}
 
     public ParametrosCurso(
             List<Turno> turnos,
             List<Disciplina> disciplinas,
-            Integer maxAlunosGrupo
+            List<AjusteTipoTcc> ajustesTipoTcc
     ) {
         this.setTurnos(turnos);
         this.setDisciplinas(disciplinas);
-        this.setMaxAlunosGrupo(maxAlunosGrupo);
+        this.setAjustesTipoTcc(ajustesTipoTcc);
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {
@@ -43,8 +44,8 @@ public class ParametrosCurso {
         if(turnos == null || turnos.isEmpty()) {
             throw new ExcecaoDominio(
                     CodigoErro.VD_001_CAMPO_OBRIGATORIO,
-                    "ParametrosCurso: Validação falhou. O campo obrigatório "
-                    + "'turnos' estava nulo ou vazio."
+                    "[ParametrosCurso]: Validação falhou. O campo obrigatório "
+                    + "'[Turnos]' estava nulo ou vazio."
             );
         }
         this.turnos = turnos;
@@ -58,34 +59,25 @@ public class ParametrosCurso {
         if(disciplinas == null || disciplinas.isEmpty()) {
             throw new ExcecaoDominio(
                     CodigoErro.VD_001_CAMPO_OBRIGATORIO,
-                    "ParametrosCurso: Validação falhou. O campo obrigatório "
-                    + "'disciplinas' estava nulo ou vazio."
+                    "[ParametrosCurso]: Validação falhou. O campo obrigatório "
+                    + "'[Disciplinas]' estava nulo ou vazio."
             );
         }
         this.disciplinas = disciplinas;
     }
 
-    public Integer getMaxAlunosGrupo() {
-        return maxAlunosGrupo;
+    public List<AjusteTipoTcc> getAjustesTipoTcc() {
+        return ajustesTipoTcc;
     }
 
-    public void setMaxAlunosGrupo(Integer maxAlunosGrupo) {
-        if(maxAlunosGrupo == null) {
+    public void setAjustesTipoTcc(List<AjusteTipoTcc> ajustesTipoTcc) {
+        if(ajustesTipoTcc == null || ajustesTipoTcc.isEmpty()) {
             throw new ExcecaoDominio(
                     CodigoErro.VD_001_CAMPO_OBRIGATORIO,
-                    "ParametrosCurso: Validação falhou. O campo obrigatório "
-                    + "'máximo de alunos por grupo' estava nulo ou vazio."
+                    "[ParametrosCurso]: Validação falhou. O campo obrigatório "
+                    + "'[Ajustes de Tipos de TCC]' estava nulo ou vazio."
             );
         }
-
-        if(maxAlunosGrupo < 1) {
-            throw new ExcecaoDominio(
-                    CodigoErro.VD_005_PADRAO_INVALIDO,
-                    "Parâmetros de Curso: O campo 'máximo de alunos por grupo' "
-                    + "não segue o padrão esperado. (Valor: '[" + maxAlunosGrupo
-                    + "]', Padrão: '[Valor >= 1]')"
-            );
-        }
-        this.maxAlunosGrupo = maxAlunosGrupo;
+        this.ajustesTipoTcc = ajustesTipoTcc;
     }
 }
