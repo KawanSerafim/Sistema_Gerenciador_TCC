@@ -45,6 +45,15 @@ public class AjusteTipoTcc {
                     + "'[Máximo de Alunos por Grupo]' estava nulo ou vazio."
             );
         }
+
+        if(maxAlunosGrupo < 1) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_005_PADRAO_INVALIDO,
+                    "[AjusteTipoTcc]: O campo 'Máximo de Alunos por Grupo' "
+                    + "não segue o padrão esperado. (Valor: '[" + maxAlunosGrupo
+                    + "]', Padrão: '[Valor >= 1]')"
+            );
+        }
         this.maxAlunosGrupo = maxAlunosGrupo;
     }
 }
