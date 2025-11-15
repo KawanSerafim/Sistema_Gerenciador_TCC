@@ -7,7 +7,8 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.ExportarAlunosResposta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.GerarTurmaResposta;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.mapeadores.AlunoListaMapeador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.mapeadores
+        .AlunoListaMapeador;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .ExportarAlunosCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
