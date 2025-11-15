@@ -28,8 +28,12 @@ public class ParametrosCursoModelo {
     @Column(nullable = false)
     private List<Disciplina> disciplinas;
 
-    @Column(name = "max_alunos_grupo", nullable = false)
-    private Integer maxAlunosGrupo;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "curso_ajustes_tcc",
+            joinColumns = @JoinColumn(name = "id_curso")
+    )
+    private List<AjusteTipoTccModelo> ajusteTipoTcc;
 
     public ParametrosCursoModelo() {}
 
@@ -49,11 +53,11 @@ public class ParametrosCursoModelo {
         this.disciplinas = disciplinas;
     }
 
-    public Integer getMaxAlunosGrupo() {
-        return maxAlunosGrupo;
+    public List<AjusteTipoTccModelo> getAjusteTipoTcc() {
+        return ajusteTipoTcc;
     }
 
-    public void setMaxAlunosGrupo(Integer maxAlunosGrupo) {
-        this.maxAlunosGrupo = maxAlunosGrupo;
+    public void setAjusteTipoTcc(List<AjusteTipoTccModelo> ajusteTipoTcc) {
+        this.ajusteTipoTcc = ajusteTipoTcc;
     }
 }
