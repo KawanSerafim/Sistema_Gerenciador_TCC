@@ -7,7 +7,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.ExportarAlunosResposta;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.dtos
         .respostas.GerarTurmaResposta;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.mapeadores.AlunoRespostaMapeador;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.rede.mapeadores.AlunoListaMapeador;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .ExportarAlunosCaso;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
@@ -27,12 +27,12 @@ import java.io.IOException;
 public class TurmaControlador {
     private final GerarTurmaCaso gerarTurmaCaso;
     private final ExportarAlunosCaso exportarAlunosCaso;
-    private final AlunoRespostaMapeador alunoRespostaMapeador;
+    private final AlunoListaMapeador alunoRespostaMapeador;
 
     public TurmaControlador(
             GerarTurmaCaso gerarTurmaCaso,
             ExportarAlunosCaso exportarAlunosCaso,
-            AlunoRespostaMapeador alunoRespostaMapeador
+            AlunoListaMapeador alunoRespostaMapeador
     ) {
         this.gerarTurmaCaso = gerarTurmaCaso;
         this.exportarAlunosCaso = exportarAlunosCaso;
