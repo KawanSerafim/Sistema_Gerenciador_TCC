@@ -101,4 +101,8 @@ public class Curso {
     public List<AjusteTipoTcc> getAjustesTcc() {
         return this.getParametros().getAjustesTipoTcc();
     }
+
+    public Long getIdCoordenador() {
+        return coordenador.getId();
+    }
 }

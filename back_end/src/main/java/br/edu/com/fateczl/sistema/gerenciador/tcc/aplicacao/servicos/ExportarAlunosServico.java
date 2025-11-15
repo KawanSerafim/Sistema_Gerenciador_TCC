@@ -86,7 +86,11 @@ public class ExportarAlunosServico implements ExportarAlunosCaso {
                     + "]'."
             ));
 
-        if(!Objects.equals(turma.getIdProfessorTg(), professor.getId())) {
+        var curso = turma.getCurso();
+
+        if(!Objects.equals(turma.getIdProfessorTg(), professor.getId())
+                && !Objects.equals(curso.getIdCoordenador(), professor.getId())
+        ) {
             throw new ExcecaoDominio(
                     CodigoErro.AU_001_PERMISSAO_NEGADA,
                     "Autorização: Permissão negada para Usuário (ID: ["
