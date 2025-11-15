@@ -8,12 +8,13 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParametrosCurso {
     private List<Turno> turnos;
     private List<Disciplina> disciplinas;
-    private List<AjusteTipoTcc> ajustesTipoTcc;
+    private List<AjusteTipoTcc> ajustesTipoTcc = new ArrayList<>();
 
     public ParametrosCurso() {}
 
@@ -24,6 +25,7 @@ public class ParametrosCurso {
     ) {
         this.setTurnos(turnos);
         this.setDisciplinas(disciplinas);
+        this.setAjustesTipoTcc(ajustesTipoTcc);
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {

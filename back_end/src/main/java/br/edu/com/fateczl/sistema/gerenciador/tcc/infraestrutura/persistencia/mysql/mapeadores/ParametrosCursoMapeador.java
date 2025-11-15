@@ -25,12 +25,14 @@ public class ParametrosCursoMapeador {
         var parametrosCursoModelo = new ParametrosCursoModelo();
         parametrosCursoModelo.setDisciplinas(dominio.getDisciplinas());
         parametrosCursoModelo.setTurnos(dominio.getTurnos());
-        parametrosCursoModelo.setAjusteTipoTcc(
-                dominio.getAjustesTipoTcc().stream()
-                        .map(ajusteMapeador::paraModelo)
-                        .collect(Collectors.toList())
-        );
 
+        if(dominio.getAjustesTipoTcc() != null){
+            parametrosCursoModelo.setAjustesTipoTcc(
+                    dominio.getAjustesTipoTcc().stream()
+                            .map(ajusteMapeador::paraModelo)
+                            .collect(Collectors.toList())
+            );
+        }
         return parametrosCursoModelo;
     }
 
@@ -40,12 +42,14 @@ public class ParametrosCursoMapeador {
         var parametrosCurso = new ParametrosCurso();
         parametrosCurso.setDisciplinas(modelo.getDisciplinas());
         parametrosCurso.setTurnos(modelo.getTurnos());
-        parametrosCurso.setAjustesTipoTcc(
-                modelo.getAjusteTipoTcc().stream()
-                        .map(ajusteMapeador::paraDominio)
-                        .collect(Collectors.toList())
-        );
 
+        if(modelo.getAjustesTipoTcc() != null){
+            parametrosCurso.setAjustesTipoTcc(
+                    modelo.getAjustesTipoTcc().stream()
+                            .map(ajusteMapeador::paraDominio)
+                            .collect(Collectors.toList())
+            );
+        }
         return parametrosCurso;
     }
 }
