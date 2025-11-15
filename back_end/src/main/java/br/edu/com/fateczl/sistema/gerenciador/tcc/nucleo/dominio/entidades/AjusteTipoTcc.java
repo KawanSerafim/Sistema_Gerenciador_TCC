@@ -1,8 +1,11 @@
 package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades;
 
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.TipoTcc;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes.CodigoErro;
-import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes.ExcecaoDominio;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
+        .TipoTcc;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
+        .CodigoErro;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
+        .ExcecaoDominio;
 
 public class AjusteTipoTcc {
     private TipoTcc tipoTcc;
