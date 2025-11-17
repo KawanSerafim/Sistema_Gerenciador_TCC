@@ -14,7 +14,7 @@ public class CoorientadorModelo {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 50)
     private String origem;
 
     @Enumerated(EnumType.STRING)
