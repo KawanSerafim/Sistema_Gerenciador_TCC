@@ -13,6 +13,7 @@ import java.util.List;
 public class GrupoTcc {
     private Long id;
     private Professor orientador;
+    private Coorientador coorientador;
     private String tema;
     private TipoTcc tipoTcc;
     private Disciplina disciplina;
@@ -23,13 +24,13 @@ public class GrupoTcc {
 
     public GrupoTcc(
             Professor orientador,
+            Coorientador coorientador,
             String tema,
             TipoTcc tipoTcc,
             Disciplina disciplina,
             List<Aluno> alunos,
             Turma turma
     ) {
-        this.setOrientador(orientador);
         this.setTema(tema);
         this.setTipoTcc(tipoTcc);
         this.setDisciplina(disciplina);
@@ -68,6 +69,22 @@ public class GrupoTcc {
             );
         }
         this.orientador = orientador;
+    }
+
+    public Coorientador getCoorientador() {
+        return coorientador;
+    }
+
+    public void setCoorientador(Coorientador coorientador) {
+        if(coorientador == null) {
+            throw new ExcecaoDominio(
+                    CodigoErro.VD_001_CAMPO_OBRIGATORIO,
+                    "[GrupoTcc] (ID: [" + this.getId() + "]): Validação falhou."
+                    + "O campo obrigatório '[Coorientador]' estava nulo ou "
+                    + "vazio."
+            );
+        }
+        this.coorientador = coorientador;
     }
 
     public String getTema() {
