@@ -45,4 +45,70 @@ public class GrupoTccModelo {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_turma")
     private TurmaModelo turma;
+
+    public GrupoTccModelo() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ProfessorModelo getOrientador() {
+        return orientador;
+    }
+
+    public void setOrientador(ProfessorModelo orientador) {
+        this.orientador = orientador;
+    }
+
+    public CoorientadorModelo getCoorientador() {
+        return coorientador;
+    }
+
+    public void setCoorientador(CoorientadorModelo coorientador) {
+        this.coorientador = coorientador;
+    }
+
+    public String getTema() {
+        return tema;
+    }
+
+    public void setTema(String tema) {
+        this.tema = tema;
+    }
+
+    public TipoTcc getTipoTcc() {
+        return tipoTcc;
+    }
+
+    public void setTipoTcc(TipoTcc tipoTcc) {
+        this.tipoTcc = tipoTcc;
+    }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public List<AlunoModelo> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<AlunoModelo> alunos) {
+        this.alunos = alunos;
+    }
+
+    public TurmaModelo getTurma() {
+        return turma;
+    }
+
+    public void setTurma(TurmaModelo turma) {
+        this.turma = turma;
+    }
 }
