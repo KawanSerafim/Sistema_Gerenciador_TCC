@@ -18,6 +18,10 @@ public class AjusteTipoTcc {
         this.setMaxAlunosGrupo(maxAlunosGrupo);
     }
 
+    public boolean validarTipoTcc(TipoTcc tipoTcc) {
+        return this.tipoTcc == tipoTcc;
+    }
+
     public TipoTcc getTipoTcc() {
         return tipoTcc;
     }

@@ -2,6 +2,7 @@ package br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades;
 
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.TipoTcc;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.Turno;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
@@ -26,6 +27,15 @@ public class Curso {
         this.setNome(nome);
         this.setParametros(parametros);
         this.setCoordenador(coordenador);
+    }
+
+    public boolean validarTipoTcc(TipoTcc tipoTcc) {
+        if(tipoTcc == null) return false;
+
+        return this.getAjustesTcc().stream()
+                .anyMatch(ajuste -> ajuste.getTipoTcc()
+                        .equals(tipoTcc)
+                );
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {
