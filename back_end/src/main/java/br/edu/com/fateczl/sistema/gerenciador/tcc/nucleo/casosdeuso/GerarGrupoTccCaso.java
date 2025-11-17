@@ -6,7 +6,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.TipoTcc;
 
 import java.util.List;
 
-public interface GerarGrupoTcc {
+public interface GerarGrupoTccCaso {
     record Entrada(
             String tema,
             TipoTcc tipoTcc,
