@@ -33,16 +33,12 @@ public class Curso {
         if(tipoTcc == null) return false;
 
         return this.getAjustesTcc().stream()
-                .anyMatch(ajuste -> ajuste.getTipoTcc()
-                        .equals(tipoTcc)
-                );
+                .anyMatch(ajuste -> ajuste.getTipoTcc().equals(tipoTcc));
     }
 
     public boolean validarQtdAlunosGrupo(Integer quantidade) {
         return this.getAjustesTcc().stream()
-                .anyMatch(ajuste -> ajuste.validarQtdAlunosGrupo(
-                        quantidade
-                ));
+                .anyMatch(ajuste -> ajuste.validarQtdAlunosGrupo(quantidade));
     }
 
     public boolean validarDisciplina(Disciplina disciplina) {
