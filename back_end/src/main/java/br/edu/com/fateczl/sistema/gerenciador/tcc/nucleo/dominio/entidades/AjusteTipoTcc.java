@@ -7,6 +7,8 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .ExcecaoDominio;
 
+import java.util.Objects;
+
 public class AjusteTipoTcc {
     private TipoTcc tipoTcc;
     private Integer maxAlunosGrupo;
@@ -18,8 +20,10 @@ public class AjusteTipoTcc {
         this.setMaxAlunosGrupo(maxAlunosGrupo);
     }
 
-    public boolean validarTipoTcc(TipoTcc tipoTcc) {
-        return this.tipoTcc == tipoTcc;
+    public boolean validarQtdAlunosGrupo(Integer quantidade) {
+        if(quantidade == null) return false;
+
+        return quantidade > 0 && quantidade <= maxAlunosGrupo;
     }
 
     public TipoTcc getTipoTcc() {

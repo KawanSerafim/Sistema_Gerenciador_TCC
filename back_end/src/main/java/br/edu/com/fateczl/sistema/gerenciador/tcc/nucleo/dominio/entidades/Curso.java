@@ -38,6 +38,13 @@ public class Curso {
                 );
     }
 
+    public boolean validarQtdAlunosGrupo(Integer quantidade) {
+        return this.getAjustesTcc().stream()
+                .anyMatch(ajuste -> ajuste.validarQtdAlunosGrupo(
+                        quantidade
+                ));
+    }
+
     public boolean validarDisciplina(Disciplina disciplina) {
         return this.getParametros().validarDisciplina(disciplina);
     }
