@@ -8,12 +8,17 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
 import br.edu.com.fateczl.sistema.gerenciador.tcc.infraestrutura.persistencia
         .mysql.modelos.TurmaModelo;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface GrupoTccRepositorioSpring
         extends JpaRepository<GrupoTccModelo, Long> {
-    Optional<GrupoTccModelo> findByAlunosAndTurma(
-            List<AlunoModelo> alunos, TurmaModelo turma);
+    @Query("SELECT g FROM GrupoTccModelo g JOIN g.alunos a WHERE g.turma = "
+            + ":turma AND a IN :alunos")
+    List<GrupoTccModelo> findByAlunosAndTurma(
+            @Param("alunos") List<AlunoModelo> alunos,
+            @Param("turma") TurmaModelo turma
+    );
 }
