@@ -23,8 +23,6 @@ public class GrupoTcc {
     public GrupoTcc() {}
 
     public GrupoTcc(
-            Professor orientador,
-            Coorientador coorientador,
             String tema,
             TipoTcc tipoTcc,
             Disciplina disciplina,
