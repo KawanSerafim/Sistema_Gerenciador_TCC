@@ -33,12 +33,19 @@ public class GrupoTccMapeador {
 
         var grupoTccModelo = new GrupoTccModelo();
         grupoTccModelo.setId(dominio.getId());
-        grupoTccModelo.setOrientador(
-                orientadorMapeador.paraModelo(dominio.getOrientador())
-        );
-        grupoTccModelo.setCoorientador(
-                coorientadorMapeador.paraModelo(dominio.getCoorientador())
-        );
+
+        if(dominio.getOrientador() != null){
+            grupoTccModelo.setOrientador(
+                    orientadorMapeador.paraModelo(dominio.getOrientador())
+            );
+        }
+
+        if(dominio.getCoorientador() != null){
+            grupoTccModelo.setCoorientador(
+                    coorientadorMapeador.paraModelo(dominio.getCoorientador())
+            );
+        }
+
         grupoTccModelo.setTema(dominio.getTema());
         grupoTccModelo.setTipoTcc(dominio.getTipoTcc());
         grupoTccModelo.setDisciplina(dominio.getDisciplina());
@@ -63,12 +70,19 @@ public class GrupoTccMapeador {
 
         var grupoTcc = new GrupoTcc();
         grupoTcc.setId(modelo.getId());
-        grupoTcc.setOrientador(
-                orientadorMapeador.paraDominio(modelo.getOrientador())
-        );
-        grupoTcc.setCoorientador(
-                coorientadorMapeador.paraDominio(modelo.getCoorientador())
-        );
+
+        if(modelo.getOrientador() != null){
+            grupoTcc.setOrientador(
+                    orientadorMapeador.paraDominio(modelo.getOrientador())
+            );
+        }
+
+        if(modelo.getCoorientador() != null){
+            grupoTcc.setCoorientador(
+                    coorientadorMapeador.paraDominio(modelo.getCoorientador())
+            );
+        }
+
         grupoTcc.setTema(modelo.getTema());
         grupoTcc.setTipoTcc(modelo.getTipoTcc());
         grupoTcc.setDisciplina(modelo.getDisciplina());
