@@ -6,6 +6,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "coorientadores")
 public class CoorientadorModelo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

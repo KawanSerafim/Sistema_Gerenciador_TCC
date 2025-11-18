@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "grupos_tcc")
 public class GrupoTccModelo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
