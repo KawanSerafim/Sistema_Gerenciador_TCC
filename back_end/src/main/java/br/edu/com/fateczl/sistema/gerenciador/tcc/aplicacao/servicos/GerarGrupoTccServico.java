@@ -12,6 +12,8 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
         .Turma;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums
         .Disciplina;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusAluno;
+import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.StatusContaUsuario;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.enums.TipoTcc;
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.excecoes
         .CodigoErro;
@@ -95,6 +97,29 @@ public class GerarGrupoTccServico implements GerarGrupoTccCaso {
                         CodigoErro.GN_001_REGISTRO_NAO_ENCONTRADO,
                         "[Aluno]: Não encontrado. Nenhuma entidade localizada "
                         + "com o critério: [Matrícula] = '[" + matricula + "]'."
+                );
+            }
+
+            var aluno = alunoOpt.get();
+
+            if(aluno.getStatus() != StatusAluno.CADASTRADO) {
+                throw new ExcecaoDominio(
+                        CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
+                        "[Aluno] (ID: [" + aluno.getId() + "]): Ação '["
+                        + "Ser cadastrado em um grupo de TCC]' falhou devido a "
+                        + "estado inválido. (EstadoAtual: '["
+                        + aluno.getStatus() + "]', Esperado: '[CADASTRADO]')"
+                );
+            }
+
+            if(aluno.getStatusContaUsuario() != StatusContaUsuario.ATIVO) {
+                throw new ExcecaoDominio(
+                        CodigoErro.RN_001_ESTADO_INVALIDO_PARA_ACAO,
+                        "[Aluno] (ID: [" + aluno.getId() + "]): Ação '["
+                        + "Ser cadastrado em um grupo de TCC]' falhou devido a "
+                        + "estado inválido. (EstadoAtual: '["
+                        + aluno.getStatusContaUsuario() + "]', Esperado: '["
+                        + "ATIVO]')"
                 );
             }
 
