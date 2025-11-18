@@ -12,6 +12,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.dominio.entidades
 import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.portas.repositorios
         .AlunoRepositorio;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -37,6 +38,7 @@ public class AlunoRepositorioImpl implements AlunoRepositorio {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Aluno> buscarPorMatricula(String matricula) {
         Optional<AlunoModelo> alunoModeloOpt = repositorioSpring
                 .findByMatricula(matricula);
@@ -45,6 +47,7 @@ public class AlunoRepositorioImpl implements AlunoRepositorio {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Aluno> buscarPorEmail(String email) {
         Optional<AlunoModelo> alunoModeloOpt = repositorioSpring
                 .findByContaUsuarioEmail(email);
