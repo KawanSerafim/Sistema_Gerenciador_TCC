@@ -7,6 +7,7 @@ import br.edu.com.fateczl.sistema.gerenciador.tcc.nucleo.casosdeuso
         .GerarGrupoTccCaso;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,6 +21,7 @@ public class GrupoTccControlador {
     }
 
     @PostMapping("/gerar")
+    @PreAuthorize("hasRole('ROLE_ALUNO')")
     public ResponseEntity<String> gerar(
             @RequestBody GerarGrupoTccRequisicao requisicao
     ) {
